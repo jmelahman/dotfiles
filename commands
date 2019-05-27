@@ -1,0 +1,34 @@
+### General ###
+# 1. Avoid alisases by prefacing command with a backslash
+# 2. Unquoted text and even text enclosed in double quotes is subject to shell expansion and substitution.
+# 3. you can’t embed a single quote inside single quotes, even if using a backslash
+# 4. bracket operators point in the direction of output, i.e. echo 'output' > outputfile
+# Makes file (updates timestamp)
+touch file
+
+# Finds a directory in the home folder
+find ~/ -type d -name '<directory name>'
+
+# Find file or application
+locate <file/application>
+
+# Searches for regular expression
+ls -d <regex1> <regex2>
+# If the -d option is specified and the filename ends with a slash, 
+# then only directories that match that pattern are displayed.
+
+# Print file with matching text
+grep -l '<text>' <place to search>
+
+### Git ###
+git clone <url>
+git add -A
+git add --all
+git status
+git commit -m ["commit message"]
+git push -u origin master
+
+### Regex ###
+# Characters enclosed in [] specify a list or range of characters, any of which will match.
+# .[!.]* is a filename expansion pattern where [] denotes a list of characters to match, but the leading ! negates the list.
+
