@@ -5,6 +5,8 @@ alias l='ls -CF'
 alias ll='ls -l'
 alias cs='cd;ls'
 
+alias py='python3'
+
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
