@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/etc/X11/xorg.conf.d'
-let g:netrw_dirhist_2='/home/lahmanja/git/dotfiles/.config/beets'
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/lahmanja/code/jmelahman.github.io'
+let g:netrw_dirhist_6='/home/lahmanja/code/jmelahman.github.io/usr'
+let g:netrw_dirhist_5='/home/lahmanja/code/jmelahman.github.io'
+let g:netrw_dirhist_4='/home/lahmanja/code/jmelahman.github.io/usr'
+let g:netrw_dirhist_3='/home/lahmanja/code/computational-physics/comp_phys/library'
+let g:netrw_dirhist_2='/home/lahmanja/code/jmelahman.github.io/usr'
+let g:netrw_dirhist_1='/etc/profile.d'

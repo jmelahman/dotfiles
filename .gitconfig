@@ -1,0 +1,12 @@
+[user]
+  name = Jamison Lahman
+  email = lahmanja@protonmail.com
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = white bold
