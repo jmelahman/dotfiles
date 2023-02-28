@@ -1,0 +1,16 @@
+*
+!/.bashrc
+!/.backgrounds/
+!/.config/beets/config.yaml
+!/.config/kglobalshortcutsrc
+!/.config/khotkeysrc
+!/.config/kwinrc
+!/.config/plasma-org.kde.plasma.desktop-appletsrc
+!/.face
+!/.gitattributes
+!/.gitconfig
+!/.gitignore
+!/.pre-commit-config.yaml
+!/.pylintrc
+!/.vimrc
+
