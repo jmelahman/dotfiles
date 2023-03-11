@@ -13,4 +13,4 @@
 !/.pre-commit-config.yaml
 !/.pylintrc
 !/.vimrc
-
+!README.md
