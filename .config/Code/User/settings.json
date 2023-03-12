@@ -1,0 +1,15 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "tabnine.experimentalAutoImports": true,
+    "mypy.configFile": "tools/typing/mypy.ini",
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--show-column-numbers",
+        "--no-pretty"
+    ],
+    "[python]": {
+        "editor.formatOnType": true
+    }
+}
