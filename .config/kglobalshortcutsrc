@@ -3,6 +3,7 @@ update_info=bismuth_shortcuts_category.upd:bismuth-shortcuts-category,bismuth_sh
 
 [ActivityManager]
 _k_friendly_name=Activity Manager
+switch-to-activity-1b5fc53f-a1d5-4127-b04c-c391097f8e07=none,none,Switch to activity "Default"
 switch-to-activity-e78811de-d309-4215-93f9-93816765c3fb=none,none,Switch to activity "Default"
 
 [Clementine]
@@ -14,7 +15,7 @@ prev_track=none,none,Previous track
 stop=none,none,Stop
 
 [KDE Keyboard Layout Switcher]
-Switch to Next Keyboard Layout=none,none,Switch to Next Keyboard Layout
+Switch to Next Keyboard Layout=none,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
 [amarok]
@@ -86,13 +87,17 @@ _k_friendly_name=Accessibility
 [kcm_touchpad]
 Disable Touchpad=Touchpad Off,Touchpad Off,Disable Touchpad
 Enable Touchpad=Touchpad On,Touchpad On,Enable Touchpad
-Toggle Touchpad=Touchpad Toggle,Touchpad Toggle,Toggle Touchpad
+Toggle Touchpad=Touchpad Toggle,Touchpad Toggle\tMeta+Ctrl+Zenkaku Hankaku,Toggle Touchpad
 _k_friendly_name=Touchpad
 
 [kded5]
 Show System Activity=Ctrl+Esc,Ctrl+Esc,Show System Activity
 _k_friendly_name=KDE Daemon
 display=Display\tMeta+P,Display\tMeta+P,Switch Display
+
+[khotkeys]
+_k_friendly_name=Custom Shortcuts Service
+{d03619b6-9b3c-48cc-9d9c-a2aadb485550}=none,none,Search
 
 [kmix]
 _k_friendly_name=Audio Volume
@@ -122,6 +127,7 @@ ExposeClassCurrentDesktop=none,none,Toggle Present Windows (Window class on curr
 Increase Opacity=none,,Increase Opacity of Active Window by 5%
 Invert Screen Colors=none,none,Invert Screen Colors
 Kill Window=Ctrl+Alt+Esc,Meta+Ctrl+Esc,Kill Window
+Move Tablet to Next Output=none,none,Move the tablet to the next output
 MoveMouseToCenter=none,Meta+F6,Move Mouse to Center
 MoveMouseToFocus=none,Meta+F5,Move Mouse to Focus
 MoveZoomDown=none,none,Move Zoomed Area Downwards
