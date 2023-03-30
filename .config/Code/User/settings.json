@@ -17,13 +17,12 @@
     },
     "vim.handleKeys": {
         "<C-c>": false,
-		"<C-x>": false,
-		"<C-a>": false,
-		"<C-f>": false,
-		"<C-w>": false
-	},
+        "<C-x>": false,
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-w>": false
+    },
     "workbench.sideBar.location": "right",
-    "workbench.colorTheme": "Orbi Red",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
@@ -96,7 +95,6 @@
                     "entity.name.tag",
                     "entity.name.type",
                     "meta.function",
-
                     "support.type.python"
                 ],
                 "settings": {
@@ -341,5 +339,9 @@
                 }
             },
         ]
-    }
+    },
+    "workbench.colorTheme": "Orbi Red",
+    "window.menuBarVisibility": "toggle",
+    "bazel.buildifierExecutable": "/home/jamison/.local/bin/buildifier",
+    "bazel.buildifierFixOnFormat": true
 }
