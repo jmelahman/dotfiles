@@ -25,7 +25,7 @@ capture_error cd "$HOME" > /dev/null
 capture_error git pull
 if [ -n "$(git status --short)" ]; then
   capture_error git commit -am "Auto-sync $(/usr/bin/date)"
-  capture_error git push
 fi
+capture_error git push
 
 trap - EXIT
