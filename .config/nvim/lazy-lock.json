@@ -5,7 +5,7 @@
   "coq_nvim": { "branch": "coq", "commit": "1aec0a1419841451885070a10117e63934e38b50" },
   "go.nvim": { "branch": "master", "commit": "8389adb56ab124b75d858df5f87b741eaca7b8b3" },
   "guihua.lua": { "branch": "master", "commit": "225db770e36aae6a1e9e3a65578095c8eb4038d3" },
-  "lazy.nvim": { "branch": "main", "commit": "48b52b5cfcf8f88ed0aff8fde573a5cc20b1306d" },
+  "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
   "nvim-lspconfig": { "branch": "master", "commit": "3ad562700d0615818bf358268ac8914f6ce2b079" },
   "nvim-treesitter": { "branch": "master", "commit": "749df308870381979dc098063973f6ace9968ef6" }
 }
