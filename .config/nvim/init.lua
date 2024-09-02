@@ -54,10 +54,10 @@ vim.opt.listchars = { tab = '▸ ', trail = '•' }  -- Configure Visualize whit
 vim.opt.list = true             -- Enable whitespace visualization
 
 -- Automatically remove trailing whitespace
-#vim.api.nvim_create_autocmd('BufWritePre', {
-#  pattern = '*',
-#  command = [[%s/\s\+$//e]]
-#})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  command = [[%s/\s\+$//e]]
+})
 
 -- Highlighting
 vim.cmd('hi clear SpellBad')
@@ -90,19 +90,11 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
       },
       config = function()
-        require("go").setup()
-        local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.go",
-            callback = function()
-                require('go.format').goimport()
-            end,
-            group = format_sync_grp,
-        })
+        require("go").setup({ gofmt = "golsp" })
       end,
       event = {"CmdlineEnter"},
       ft = {"go", 'gomod'},
-      build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+      build = ':lua require("go.install").update_all_sync()'
     },
   },
   -- colorscheme that will be used when installing plugins.
