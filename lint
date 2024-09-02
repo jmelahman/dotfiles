@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+docker run -v "$PWD:/src" koalaman/shellcheck:v0.10.0 \
+  /src/dot-sync \
+  --severity=style \
+  --color=always

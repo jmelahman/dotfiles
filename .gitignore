@@ -1,9 +1,13 @@
 *
+!/lint
+!/dot-sync
 !/.bashrc
 !/.backgrounds/
 !/.config/beets/config.yaml
 !/.config/cosmic/
 !/.config/nvim/
+!/.config/systemd/user/dot-sync.service
+!/.config/systemd/user/dot-sync.timer
 !/.face
 !/.gitattributes
 !/.gitconfig

@@ -1,0 +1,29 @@
+#!/bin/bash
+set -eo pipefail
+
+CURRENT_COMMAND=""
+ERROR_LOG=""
+
+function notify_on_error {
+  notify-send --app-name="dot-sync" \
+    "Command: '${CURRENT_COMMAND[*]}' failed." \
+    "$(echo "$ERROR_LOG" | tr '\n' ' ' | tr -s '[:space:]')"
+}
+
+function capture_error {
+  CURRENT_COMMAND=("$@")
+  OUTPUT="$("${CURRENT_COMMAND[@]}" 2>&1)" || {
+    returncode=$?
+    ERROR_LOG="$OUTPUT"
+    return $returncode
+  }
+}
+
+trap 'notify_on_error' EXIT
+
+capture_error cd "$HOME" > /dev/null
+capture_error git pull
+capture_error git commit -am "Auto-sync $(/usr/bin/date)"
+capture_error git push
+
+trap - EXIT
