@@ -23,7 +23,9 @@ trap 'notify_on_error' EXIT
 
 capture_error cd "$HOME" > /dev/null
 capture_error git pull
-capture_error git commit -am "Auto-sync $(/usr/bin/date)"
-capture_error git push
+if [ -n "$(git status -s)" ]; then
+  capture_error git commit -am "Auto-sync $(/usr/bin/date)"
+  capture_error git push
+fi
 
 trap - EXIT
