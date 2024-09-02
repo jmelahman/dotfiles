@@ -81,6 +81,21 @@ require("lazy").setup({
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
         { 'ms-jpq/coq.thirdparty', branch = "3p" }
       },
+      config = function()
+        local lspconfig = require('lspconfig')
+        lspconfig.gopls.setup({
+            on_attach = function(client, bufnr)
+                -- Enable format on save
+                if client.server_capabilities.documentFormattingProvider then
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                        buffer = bufnr,
+                        callback = function() vim.lsp.buf.format() end
+                    })
+                end
+            end,
+          })
+      end,
     },
     {
       "ray-x/go.nvim",
@@ -90,14 +105,6 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
       },
       config = function()
-        local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = "*.go",
-            callback = function()
-                require('go.format').goimport()
-            end,
-            group = format_sync_grp,
-        })
         require("go").setup()
       end,
       event = {"CmdlineEnter"},
