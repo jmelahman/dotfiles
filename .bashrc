@@ -32,7 +32,8 @@ export LSCOLOR=""
 
 # Customize Path
 export GOPATH="$HOME/.go"
-export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$GOPATH/bin:$PATH
+export GOBIN="$GOPATH/bin"
+export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$GOBIN:$PATH
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
