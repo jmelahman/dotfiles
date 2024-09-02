@@ -84,13 +84,12 @@ require("lazy").setup({
       config = function()
         local lspconfig = require('lspconfig')
         lspconfig.gopls.setup({
-            on_attach = function(client, bufnr)
+            on_attach = function(client)
                 -- Enable format on save
                 if client.server_capabilities.documentFormattingProvider then
                     vim.api.nvim_create_autocmd("BufWritePre", {
                         group = vim.api.nvim_create_augroup("Format", { clear = true }),
                         pattern = '*.go',
-                        buffer = bufnr,
                         callback = function() vim.lsp.buf.format() end
                     })
                 end
