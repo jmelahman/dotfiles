@@ -2,11 +2,8 @@
 !/.bashrc
 !/.backgrounds/
 !/.config/beets/config.yaml
-!/.config/Code/User/settings.json
-!/.config/kglobalshortcutsrc
-!/.config/khotkeysrc
-!/.config/kwinrc
-!/.config/plasma-org.kde.plasma.desktop-appletsrc
+!/.config/cosmic/
+!/.config/nvim/
 !/.face
 !/.gitattributes
 !/.gitconfig
