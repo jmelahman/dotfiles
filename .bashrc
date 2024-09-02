@@ -33,12 +33,7 @@ export LSCOLOR=""
 # Customize Path
 export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$PATH
 
-# Provides desktop notification when long running commands complete
-# See also, https://askubuntu.com/a/617735
-if [ -f /usr/share/undistract-me/long-running.bash ]; then
-  . /usr/share/undistract-me/long-running.bash
-  notify_when_long_running_commands_finish_install
-fi
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 if [ -f /.dockerenv ]; then
   export IN_DOCKER=true

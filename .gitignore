@@ -9,6 +9,7 @@
 !/.gitconfig
 !/.gitignore
 !/.pre-commit-config.yaml
+!/.ripgreprc
 !/.pylintrc
 !/.vimrc
 !README.md
