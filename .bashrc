@@ -31,7 +31,7 @@ export CLICOLOR="Yes"
 export LSCOLOR=""
 
 # Customize Path
-export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$PATH
+export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$HOME/go/bin:$PATH
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
