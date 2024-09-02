@@ -1,8 +1,8 @@
 Some(([
     "com.system76.CosmicPanelAppButton",
-    "com.system76.CosmicAppletWorkspaces",
     "com.system76.CosmicAppList",
 ], [
+    "com.system76.CosmicAppletWorkspaces",
     "com.system76.CosmicAppletInputSources",
     "com.system76.CosmicAppletStatusArea",
     "com.system76.CosmicAppletTiling",
