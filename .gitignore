@@ -4,7 +4,7 @@
 !/.bashrc
 !/.backgrounds/
 !/.config/beets/config.yaml
-!/.config/cosmic/
+!/.config/cosmic/com.system76.CosmicSettings.Shortcuts/
 !/.config/nvim/
 !/.config/systemd/user/dot-sync.service
 !/.config/systemd/user/dot-sync.timer
