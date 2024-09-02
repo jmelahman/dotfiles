@@ -18,6 +18,12 @@ git restore .
 
 to restore the `deleted` files.
 
+## Installing `dot-sync`
+
+```shell
+systemctl enable --now --user dot-sync.timer
+```
+
 ## Tracking New Files
 
 For privacy, tracking files in the repo are opt-in.
