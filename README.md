@@ -20,6 +20,8 @@ to restore the `deleted` files.
 
 ## Installing `dot-sync`
 
+`dot-sync` can be enabled to automatically sync (push and pull) changes every 10 minutes.
+
 ```shell
 systemctl enable --now --user dot-sync.timer
 ```
