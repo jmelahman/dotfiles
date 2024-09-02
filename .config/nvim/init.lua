@@ -1,3 +1,26 @@
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 -- Personal configurations
 vim.opt.compatible = false      -- Set compatibility to Vim only
 vim.opt.modelines = 0           -- Disable modelines
@@ -30,24 +53,6 @@ vim.opt.scrolloff = 3           -- Minimum lines around cursor displayed
 vim.opt.listchars = { tab = '▸ ', trail = '•' }  -- Configure Visualize whitespace
 vim.opt.list = true             -- Enable whitespace visualization
 
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-
 -- Automatically remove trailing whitespace
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
@@ -57,12 +62,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 -- Highlighting
 vim.cmd('hi clear SpellBad')
 vim.cmd('hi SpellBad cterm=underline')
-
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 
 vim.g.coq_settings = {
   auto_start = "shut-up",
@@ -75,14 +74,11 @@ require("lazy").setup({
   spec = {
     { "Tsuzat/NeoSolarized.nvim", lazy = false, priority = 1000 },
     {
-      "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
-      lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
+      "neovim/nvim-lspconfig",
+      lazy = false,
       dependencies = {
-        -- main one
         { "ms-jpq/coq_nvim", branch = "coq" },
-        -- 9000+ Snippets
         { "ms-jpq/coq.artifacts", branch = "artifacts" },
-        -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
         { 'ms-jpq/coq.thirdparty', branch = "3p" }
       },
     },
@@ -101,7 +97,6 @@ require("lazy").setup({
       build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
   },
-  -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "NeoSolarized" } },
   -- automatically check for plugin updates
