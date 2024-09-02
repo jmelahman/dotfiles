@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Git Sync Every 10 Minutes
+Description=Sync Dotfiles Every 10 Minutes
 
 [Timer]
 OnBootSec=10min
