@@ -139,6 +139,7 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias vim="nvim"
+alias hostname="cat /etc/hostname"
 
 # Functions
 function ga() {
