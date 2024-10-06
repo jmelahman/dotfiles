@@ -2,6 +2,7 @@
 !/lint
 !/dot-sync
 !/.bashrc
+!/.bash_profile
 !/.backgrounds/
 !/.config/beets/config.yaml
 !/.config/cosmic/com.system76.CosmicAppletTime/
