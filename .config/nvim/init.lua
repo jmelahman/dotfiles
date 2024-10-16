@@ -83,6 +83,7 @@ require("lazy").setup({
       },
       config = function()
         local lspconfig = require('lspconfig')
+        lspconfig.pyright.setup({})
         lspconfig.gopls.setup({
             on_attach = function(client)
                 -- Enable format on save
