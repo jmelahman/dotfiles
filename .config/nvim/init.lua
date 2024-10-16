@@ -111,6 +111,20 @@ require("lazy").setup({
       ft = {"go", 'gomod'},
       build = ':lua require("go.install").update_all_sync()'
     },
+    {
+      "hashivim/vim-terraform",
+      config = function()
+        -- Optional: Autoformat terraform files
+        vim.g.terraform_fmt_on_save = 1
+        vim.g.terraform_align = 1
+
+        -- Enable terraform filetype detection
+        vim.cmd([[
+          autocmd BufRead,BufNewFile *.tf set filetype=terraform
+          autocmd BufRead,BufNewFile *.tfstate set filetype=json
+        ]])
+      end
+    },
   },
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "NeoSolarized" } },
