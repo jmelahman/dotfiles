@@ -133,4 +133,4 @@ require("lazy").setup({
   checker = { enabled = true , notify = false },
 })
 
-vim.cmd [[ colorscheme NeoSolarized ]]
+vim.cmd [[ colorscheme jvim ]]
