@@ -27,6 +27,7 @@ vim.opt.modelines = 0           -- Disable modelines
 vim.opt.encoding = 'utf-8'
 vim.opt.spelllang = 'en'        -- English language for spellcheck
 vim.opt.spell = true            -- Enable spellcheck by default
+vim.opt.signcolumn = "no"       -- Disable vertical gutter
 
 -- Searching
 vim.opt.ignorecase = true       -- Case insensitive
@@ -132,5 +133,10 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true , notify = false },
 })
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"python"},
+  highlight = { enable = true },
+}
 
 vim.cmd [[ colorscheme jvim ]]
