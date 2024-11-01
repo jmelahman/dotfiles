@@ -48,4 +48,11 @@
         ],
         key: "Delete",
     ): System(LockScreen),
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "l",
+    ): System(LockScreen),
 }
