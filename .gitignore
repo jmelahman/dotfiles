@@ -20,6 +20,7 @@
 !/.gitattributes
 !/.gitconfig
 !/.gitignore
+!/.mozilla/firefox/ltqkap4t.default-release/userChrome.css
 !/.pre-commit-config.yaml
 !/.ripgreprc
 !/.pylintrc
