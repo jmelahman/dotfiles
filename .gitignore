@@ -20,8 +20,8 @@
 !/.gitattributes
 !/.gitconfig
 !/.gitignore
-!/.mozilla/firefox/ltqkap4t.default-release/user.js
-!/.mozilla/firefox/ltqkap4t.default-release/userChrome.css
+!/.mozilla/firefox/jamison.default/user.js
+!/.mozilla/firefox/jamison.default/userChrome.css
 !/.pre-commit-config.yaml
 !/.ripgreprc
 !/.pylintrc
