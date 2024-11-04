@@ -3,32 +3,21 @@
         modifiers: [
             Super,
         ],
-        key: "d",
-    ): System(Launcher),
-    (
-        modifiers: [
-            Super,
-        ],
         key: "m",
     ): Disable,
     (
         modifiers: [
             Super,
-            Shift,
         ],
-        key: "q",
-    ): Close,
+        key: "d",
+    ): System(Launcher),
     (
         modifiers: [
-            Super,
+            Ctrl,
+            Alt,
         ],
-        key: "f",
-    ): Maximize,
-    (
-        modifiers: [
-            Super,
-        ],
-    ): Disable,
+        key: "l",
+    ): System(LockScreen),
     (
         modifiers: [
             Super,
@@ -43,16 +32,20 @@
     ): Disable,
     (
         modifiers: [
-            Ctrl,
-            Alt,
+            Super,
         ],
-        key: "Delete",
-    ): System(LockScreen),
+    ): Disable,
     (
         modifiers: [
-            Ctrl,
-            Alt,
+            Super,
+            Shift,
         ],
-        key: "l",
-    ): System(LockScreen),
+        key: "q",
+    ): Close,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "f",
+    ): Maximize,
 }
