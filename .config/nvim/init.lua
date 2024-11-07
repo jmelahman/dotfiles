@@ -73,7 +73,6 @@ vim.g.coq_settings = {
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { "Tsuzat/NeoSolarized.nvim", lazy = false, priority = 1000 },
     {
       "neovim/nvim-lspconfig",
       lazy = false,
@@ -126,6 +125,30 @@ require("lazy").setup({
           autocmd BufRead,BufNewFile *.tfstate set filetype=json
         ]])
       end
+    },
+    {
+      "yetone/avante.nvim",
+      event = "VeryLazy",
+      lazy = false,
+      opts = {
+        provider = "copilot",
+      },
+      build = "make",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "zbirenbaum/copilot.lua",
+        {
+          'MeanderingProgrammer/render-markdown.nvim',
+          opts = {
+            file_types = { "markdown", "Avante" },
+          },
+          ft = { "markdown", "Avante" },
+        },
+      },
     },
   },
   -- colorscheme that will be used when installing plugins.
