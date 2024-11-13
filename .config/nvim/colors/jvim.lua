@@ -9,6 +9,8 @@
 -- This is Vim's default color scheme. It doesn't define the Normal
 -- highlighting, it uses whatever the colors used to be.
 
+-- Color names for reference: https://www.w3schools.com/tags/ref_colornames.asp
+
 vim.cmd.highlight('clear')
 vim.g.colors_name = 'jvim'
 
@@ -218,7 +220,7 @@ hi('DiffChange',       { bg = 'DarkMagenta',                           ctermbg =
 hi('DiffDelete',       { fg = 'Blue', bg = 'DarkCyan', bold = true,    ctermfg = 'Blue', ctermbg = 'DarkCyan' })
 hi('Directory',        { fg = 'Cyan',                                  ctermfg = 'LightCyan' })
 hi('FoldColumn',       { fg = 'Cyan', bg = 'Grey',                     ctermfg = 'Cyan', ctermbg = 'DarkGrey' })
-hi('Folded',           { fg = 'Cyan', bg = 'DarkGrey',                 ctermfg = 'Cyan', ctermbg = 'DarkGrey' })
+hi('Folded',           { fg = 'Grey', bg = 'Black',                    ctermfg = 'Grey', ctermbg = 'Black' })
 hi('LineNr',           { fg = 'Yellow',                                ctermfg = 'Yellow' })
 hi('MatchParen',       { bg = 'DarkCyan',                              ctermbg = 'DarkCyan' })
 hi('MoreMsg',          { fg = 'SeaGreen', bold = true,                 ctermfg = 'LightGreen' })
