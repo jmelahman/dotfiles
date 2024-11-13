@@ -130,23 +130,23 @@ require("lazy").setup({
         ]])
       end
     },
-    -- {
-    --   "yetone/avante.nvim",
-    --   event = "VeryLazy",
-    --   lazy = false,
-    --   opts = {
-    --     provider = "copilot",
-    --   },
-    --   build = "make",
-    --   dependencies = {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     "stevearc/dressing.nvim",
-    --     "nvim-lua/plenary.nvim",
-    --     "MunifTanjim/nui.nvim",
-    --     "nvim-tree/nvim-web-devicons",
-    --     "zbirenbaum/copilot.lua",
-    --   },
-    -- },
+    {
+      "yetone/avante.nvim",
+      event = "VeryLazy",
+      lazy = false,
+      opts = {
+        provider = "copilot",
+      },
+      build = "make",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "stevearc/dressing.nvim",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "zbirenbaum/copilot.lua",
+      },
+    },
   },
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "NeoSolarized" } },
@@ -155,7 +155,7 @@ require("lazy").setup({
 })
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python", "go"},
+  ensure_installed = {"python"},
   highlight = { enable = true },
 }
 
