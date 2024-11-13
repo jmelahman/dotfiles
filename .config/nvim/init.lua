@@ -42,6 +42,10 @@ vim.opt.expandtab = true        -- Replace tabs with spaces
 vim.opt.autoindent = true       -- Enable auto indent
 vim.opt.smartindent = true      -- Enable smart indent
 
+-- Folding
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99          -- Open all folds by default
+
 -- Formatting
 vim.opt.number = true           -- Enable line numbers
 vim.opt.relativenumber = true   -- Enable relative line numbers
