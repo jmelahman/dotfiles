@@ -134,9 +134,9 @@ require("lazy").setup({
       "yetone/avante.nvim",
       event = "VeryLazy",
       lazy = false,
-      opts = {
-        provider = "copilot",
-      },
+      -- opts = {
+      --   provider = "copilot",
+      -- },
       build = "make",
       dependencies = {
         "nvim-treesitter/nvim-treesitter",
