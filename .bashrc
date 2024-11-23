@@ -140,6 +140,12 @@ alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias vim="nvim"
 alias hostname="cat /etc/hostname"
+alias home="export home=$PWD"
+
+function cd() {
+  set -x
+  HOME="${home:=$HOME}" /usr/bin/cd "$@"
+}
 
 # Functions
 function ga() {
