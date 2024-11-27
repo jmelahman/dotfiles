@@ -176,3 +176,5 @@ function gsp() {
 # See also, https://github.com/lanoxx/tilda/issues/134#issuecomment-419906171
 function title() { echo -e  "\e]2;${1}\a  tab --> [${1}]"; }
 eval $(ssh-agent) > /dev/null
+
+complete -C /home/jamison/code/monorepo/subtrees/work/work work
