@@ -134,6 +134,7 @@ require("lazy").setup({
       "yetone/avante.nvim",
       event = "VeryLazy",
       lazy = false,
+      opts = {},
       -- opts = {
       --   provider = "copilot",
       -- },
