@@ -43,7 +43,9 @@ vim.opt.autoindent = true       -- Enable auto indent
 vim.opt.smartindent = true      -- Enable smart indent
 
 -- Folding
-vim.opt.foldmethod = "indent"
+-- vim.opt.foldmethod = "syntax"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99          -- Open all folds by default
 
 -- Formatting
@@ -149,14 +151,12 @@ require("lazy").setup({
       },
     },
   },
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "NeoSolarized" } },
   -- automatically check for plugin updates
   checker = { enabled = true , notify = false },
 })
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python"},
+  ensure_installed = {"python", "go"},
   highlight = { enable = true },
 }
 
