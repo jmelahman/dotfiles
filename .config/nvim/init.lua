@@ -28,6 +28,7 @@ vim.opt.encoding = 'utf-8'
 vim.opt.spelllang = 'en'        -- English language for spellcheck
 vim.opt.spell = true            -- Enable spellcheck by default
 vim.opt.signcolumn = "no"       -- Disable vertical gutter
+vim.opt.clipboard = "unnamedplus" -- Enable the clipboard
 
 -- Searching
 vim.opt.ignorecase = true       -- Case insensitive
