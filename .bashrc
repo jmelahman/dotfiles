@@ -177,3 +177,4 @@ function gsp() {
 function title() { echo -e  "\e]2;${1}\a  tab --> [${1}]"; }
 eval $(ssh-agent) > /dev/null
 complete -C /home/jamison/code/monorepo/subtrees/work/work work
+complete -C /home/jamison/code/go-work/work work
