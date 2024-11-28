@@ -43,9 +43,7 @@ vim.opt.autoindent = true       -- Enable auto indent
 vim.opt.smartindent = true      -- Enable smart indent
 
 -- Folding
--- vim.opt.foldmethod = "syntax"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99          -- Open all folds by default
 
 -- Formatting
