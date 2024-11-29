@@ -141,6 +141,7 @@ alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias vim="nvim"
 alias hostname="cat /etc/hostname"
 
+# Functions
 function home() {
   export home="$PWD"
 }
@@ -149,7 +150,28 @@ function cd() {
   HOME="${home:=$HOME}" builtin cd "$@"
 }
 
-# Functions
+function rgplace() {
+    if [[ $# -lt 2 ]]; then
+        echo "Usage: rgplace <search_pattern> <replacement> [file_pattern]"
+        echo "Example: rgplace 'foo' 'bar' '*.txt'"
+        return 1
+    fi
+
+    local search_pattern=$1
+    local replacement=$2
+    local file_pattern=$3
+
+    if [ -z "$file_pattern" ]; then
+      file_pattern="*"
+    fi
+
+    rg --files -g "$file_pattern" | while read -r file; do
+        if rg -q "$search_pattern" "$file"; then
+            sed -i "s/${search_pattern}/${replacement}/g" "$file"
+        fi
+    done
+}
+
 function ga() {
   local message="$1"
   if [ -z "$message" ]; then
@@ -176,4 +198,3 @@ function gsp() {
 # See also, https://github.com/lanoxx/tilda/issues/134#issuecomment-419906171
 function title() { echo -e  "\e]2;${1}\a  tab --> [${1}]"; }
 eval $(ssh-agent) > /dev/null
-complete -C /home/jamison/code/go-work/work work
