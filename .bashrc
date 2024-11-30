@@ -199,3 +199,4 @@ function gsp() {
 function title() { echo -e  "\e]2;${1}\a  tab --> [${1}]"; }
 eval $(ssh-agent) > /dev/null
 complete -C /home/jamison/.local/bin/work work
+alias work='uvx --no-progress --from=gwork work'
