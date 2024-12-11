@@ -119,6 +119,7 @@ __user_prompt_command() {
     else
       PS1+="\n$ "
     fi
+    PS1="$ "
 }
 
 # Aliases
