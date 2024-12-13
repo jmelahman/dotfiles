@@ -6,18 +6,19 @@ ERROR_LOG="$(mktemp)"
 
 function notify_on_error {
   notify-send --app-name="dot-sync" \
-    "Command: '${CURRENT_COMMAND[*]}' failed." \
+    "Command: '$CURRENT_COMMAND' failed." \
     "$(cat "$ERROR_LOG" | tr '\n' ' ' | tr -s '[:space:]')"
 }
 
 function capture_error {
+  CURRENT_COMMAND="$*"
   "$@" 2> "$ERROR_LOG"
 }
 
 trap 'notify_on_error' EXIT
 
-capture_error cd "$HOME" > /dev/null
-capture_error git pull origin master > /dev/null
+capture_error cd "$HOME"
+capture_error git pull -q origin master
 capture_error pacman -Qqs > .arch.conf
 if [ -n "$(git status --short)" ]; then
   capture_error git commit -am "Auto-sync $(/usr/bin/date)"
