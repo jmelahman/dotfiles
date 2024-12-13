@@ -1,28 +1,23 @@
 #!/bin/bash
-set -eo pipefail
+set -exo pipefail
 
 CURRENT_COMMAND=""
 ERROR_LOG="$(mktemp)"
 
 function notify_on_error {
   notify-send --app-name="dot-sync" \
-    "Command: '$CURRENT_COMMAND' failed." \
+    "Failed to sync dotfiles." \
     "$(cat "$ERROR_LOG" | tr '\n' ' ' | tr -s '[:space:]')"
-}
-
-function capture_error {
-  CURRENT_COMMAND="$*"
-  "$@" 2> "$ERROR_LOG"
 }
 
 trap 'notify_on_error' EXIT
 
-capture_error cd "$HOME"
-capture_error git pull -q origin master
-capture_error pacman -Qqs > .arch.conf
+cd "$HOME" 2> "$ERROR_LOG"
+git pull -q origin master 2> "$ERROR_LOG"
+pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
 if [ -n "$(git status --short)" ]; then
-  capture_error git commit -am "Auto-sync $(/usr/bin/date)"
+  git commit -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
 fi
-capture_error git push origin master
+git push -q origin master 2> "$ERROR_LOG"
 
 trap - EXIT
