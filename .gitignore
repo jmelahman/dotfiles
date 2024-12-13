@@ -1,6 +1,7 @@
 *
 !/lint
 !/dot-sync
+!/.alacritty.toml
 !/.arch.conf
 !/.bashrc
 !/.bash_profile
@@ -14,7 +15,6 @@
 !/.config/cosmic/com.system76.CosmicPanel.Panel/
 !/.config/cosmic/com.system76.CosmicTheme.Dark/
 !/.config/cosmic/com.system76.CosmicSettings.Shortcuts/
-!/.config/konsolerc
 !/.config/nvim/
 !/.config/systemd/user/dot-sync.service
 !/.config/systemd/user/dot-sync.timer
