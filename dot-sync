@@ -22,7 +22,7 @@ function capture_error {
 trap 'notify_on_error' EXIT
 
 capture_error cd "$HOME" > /dev/null
-capture_error git pull
+capture_error git pull > /dev/null
 capture_error pacman -Qqs > .arch.conf
 if [ -n "$(git status --short)" ]; then
   capture_error git commit -am "Auto-sync $(/usr/bin/date)"
