@@ -3,14 +3,27 @@
         modifiers: [
             Super,
         ],
-        key: "m",
-    ): Disable,
+        key: "d",
+    ): System(Launcher),
     (
         modifiers: [
             Super,
         ],
-        key: "d",
-    ): System(Launcher),
+        key: "f",
+    ): Maximize,
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "slash",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "q",
+    ): Close,
     (
         modifiers: [
             Ctrl,
@@ -22,30 +35,17 @@
         modifiers: [
             Super,
         ],
+        key: "m",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+        ],
         key: "Return",
-    ): Spawn("konsole"),
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "slash",
-    ): Disable,
+    ): System(Terminal),
     (
         modifiers: [
             Super,
         ],
     ): Disable,
-    (
-        modifiers: [
-            Super,
-            Shift,
-        ],
-        key: "q",
-    ): Close,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "f",
-    ): Maximize,
 }
