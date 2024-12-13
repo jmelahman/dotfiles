@@ -16,7 +16,7 @@ cd "$HOME" 2> "$ERROR_LOG"
 git pull -q origin master 2> "$ERROR_LOG"
 pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
 if [ -n "$(git status --short)" ]; then
-  git commit -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
+  git commit --quiet -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
 fi
 git push -q origin master 2> "$ERROR_LOG"
 
