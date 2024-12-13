@@ -37,6 +37,8 @@ export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$GOBIN:$PATH
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
+# https://wiki.archlinux.org/title/Docker#Rootless_Docker_daemon
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 if [ -f /.dockerenv ]; then
   export IN_DOCKER=true
 else
