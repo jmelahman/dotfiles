@@ -2,35 +2,16 @@
     (
         modifiers: [
             Super,
-        ],
-        key: "d",
-    ): System(Launcher),
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "f",
-    ): Maximize,
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "slash",
-    ): Disable,
-    (
-        modifiers: [
-            Super,
             Shift,
         ],
         key: "q",
     ): Close,
     (
         modifiers: [
-            Ctrl,
-            Alt,
+            Super,
         ],
-        key: "l",
-    ): System(LockScreen),
+        key: "f",
+    ): Maximize,
     (
         modifiers: [
             Super,
@@ -42,7 +23,27 @@
             Super,
         ],
         key: "Return",
-    ): System(Terminal),
+        description: Some("Open Terminal"),
+    ): Spawn("kitty"),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "d",
+    ): System(Launcher),
+    (
+        modifiers: [
+            Ctrl,
+            Alt,
+        ],
+        key: "l",
+    ): System(LockScreen),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "slash",
+    ): Disable,
     (
         modifiers: [
             Super,
