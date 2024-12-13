@@ -1,6 +1,7 @@
 *
 !/lint
 !/dot-sync
+!/.arch.conf
 !/.bashrc
 !/.bash_profile
 !/.backgrounds/
