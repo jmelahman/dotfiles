@@ -141,10 +141,7 @@ alias ls='ls --color=auto'
 alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias hostname="cat /etc/hostname"
-
-if [ -f "/.dockerenv" ]; then
-  alias vim="nvim"
-fi
+alias vim="nvim"
 
 # Functions
 function home() {
