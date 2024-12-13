@@ -1,13 +1,12 @@
 #!/bin/bash
 set -eo pipefail
 
-CURRENT_COMMAND=""
 ERROR_LOG="$(mktemp)"
 
 function notify_on_error {
   notify-send --app-name="dot-sync" \
     "Failed to sync dotfiles." \
-    "$(cat "$ERROR_LOG" | tr '\n' ' ' | tr -s '[:space:]')"
+    "$(tr '\n' ' ' < "$ERROR_LOG" | tr -s '[:space:]')"
 }
 
 trap 'notify_on_error' EXIT
