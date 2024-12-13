@@ -138,8 +138,11 @@ alias kbdoff="sudo sys76-kb set -b 0"
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
-alias vim="nvim"
 alias hostname="cat /etc/hostname"
+
+if [ -f "/.dockerenv" ]; then
+  alias vim="nvim"
+fi
 
 # Functions
 function home() {
