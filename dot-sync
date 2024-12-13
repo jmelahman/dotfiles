@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exo pipefail
+set -eo pipefail
 
 CURRENT_COMMAND=""
 ERROR_LOG="$(mktemp)"
@@ -13,11 +13,11 @@ function notify_on_error {
 trap 'notify_on_error' EXIT
 
 cd "$HOME" 2> "$ERROR_LOG"
-git pull -q origin master 2> "$ERROR_LOG"
+git pull -q origin master > /dev/null 2> "$ERROR_LOG"
 pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
 if [ -n "$(git status --short)" ]; then
   git commit --quiet -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
 fi
-git push -q origin master > /dev/null 2> "$ERROR_LOG"
+git push -q origin master 2> "$ERROR_LOG"
 
 trap - EXIT
