@@ -129,7 +129,7 @@ alias gl="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgre
 alias gs='git status'
 alias gc='git checkout'
 alias gp='git push -u'
-alias gr='git reset --hard HEAD'
+alias gr='git reset --soft HEAD~1 && git commit --amend --no-edit'
 alias gg='git log --graph --oneline --all --decorate'
 alias ggm='git log --graph --oneline --decorate origin/master HEAD'
 alias gd="git diff $(git merge-base origin/master HEAD) --name-only"
