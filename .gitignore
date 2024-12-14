@@ -26,8 +26,6 @@
 !/.githooks
 !/.mozilla/firefox/jamison.default/user.js
 !/.mozilla/firefox/jamison.default/userChrome.css
-!/.pre-commit-config.yaml
 !/.ripgreprc
-!/.pylintrc
 !/.vimrc
 !README.md
