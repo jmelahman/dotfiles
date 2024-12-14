@@ -5,6 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -d "$HOME/.bash_completion.d" ]; then
+    for script in $HOME/.bash_completion.d/*; do
+        [ -r "$script" ] && . "$script"
+    done
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
