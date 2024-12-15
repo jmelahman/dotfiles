@@ -1,19 +1,27 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eo pipefail
 
 ERROR_LOG="$(mktemp)"
 
 function notify_on_error {
-  notify-send --app-name="dot-sync" \
-    "Failed to sync dotfiles." \
-    "$(tr '\n' ' ' < "$ERROR_LOG" | tr -s '[:space:]')"
+  if command -v notify-send > /dev/null; then
+    notify-send --app-name="dot-sync" \
+      "Failed to sync dotfiles." \
+      "$(tr '\n' ' ' < "$ERROR_LOG" | tr -s '[:space:]')"
+  else
+    >&2 cat "$ERROR_LOG"
+  fi
 }
 
 trap 'notify_on_error' EXIT
 
 cd "$HOME" 2> "$ERROR_LOG"
+
 git pull -q origin master > /dev/null 2> "$ERROR_LOG"
-pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
+if command -v pacman; then
+  pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
+fi
+
 if [ -n "$(git status --short)" ]; then
   git commit --quiet -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
 fi
