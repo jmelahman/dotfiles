@@ -23,7 +23,7 @@ if command -v pacman; then
 fi
 
 if [ -n "$(git status --short)" ]; then
-  git commit --quiet -am "Auto-sync $(/usr/bin/date)" 2> "$ERROR_LOG"
+  git commit --quiet -am "Auto-sync $(date)" 2> "$ERROR_LOG"
 fi
 git push -q origin master 2> "$ERROR_LOG"
 
