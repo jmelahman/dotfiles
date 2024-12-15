@@ -16,6 +16,7 @@
 !/.config/cosmic/com.system76.CosmicPanel.Panel/
 !/.config/cosmic/com.system76.CosmicTheme.Dark/
 !/.config/cosmic/com.system76.CosmicSettings.Shortcuts/
+!/.config/docker/daemon.json
 !/.config/nvim/
 /.config/nvim/lazy-lock.json
 !/.config/systemd/user/dot-sync.service
