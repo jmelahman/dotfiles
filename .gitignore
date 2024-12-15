@@ -6,6 +6,7 @@
 !/.bashrc
 !/.bash_profile
 !/.backgrounds/
+!/.bazelrc
 !/.config/beets/config.yaml
 !/.config/cosmic/com.system76.CosmicAppletTime/
 !/.config/cosmic/com.system76.CosmicBackground/
