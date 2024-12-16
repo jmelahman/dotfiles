@@ -18,7 +18,7 @@ trap 'notify_on_error' EXIT
 cd "$HOME" 2> "$ERROR_LOG"
 
 git pull -q origin master > /dev/null 2> "$ERROR_LOG"
-if command -v pacman; then
+if command -v pacman > /dev/null; then
   pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
 fi
 
