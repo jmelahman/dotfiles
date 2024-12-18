@@ -19,6 +19,8 @@
   rebase = true
 [rebase]
   autostash = true
+[lfs]
+	locksverify = false
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
