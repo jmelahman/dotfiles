@@ -160,3 +160,5 @@ require'nvim-treesitter.configs'.setup {
 }
 
 vim.cmd [[ colorscheme jvim ]]
+
+vim.keymap.set('n', '<leader>gi', '<cmd>GoImports<CR>', { desc = "Run GoImports" })
