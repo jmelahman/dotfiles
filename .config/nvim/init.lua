@@ -103,6 +103,7 @@ require("lazy").setup({
           })
       end,
     },
+    {"github/copilot.vim"},
     {
       "ray-x/go.nvim",
       dependencies = {
@@ -136,9 +137,9 @@ require("lazy").setup({
       event = "VeryLazy",
       lazy = false,
       opts = {},
-      -- opts = {
-      --   provider = "copilot",
-      -- },
+      opts = {
+        provider = "copilot",
+      },
       build = "make",
       dependencies = {
         "nvim-treesitter/nvim-treesitter",
