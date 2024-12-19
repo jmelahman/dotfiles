@@ -103,7 +103,8 @@ require("lazy").setup({
           })
       end,
     },
-    {"github/copilot.vim"},
+    -- This is only here to activate with avante.
+    -- {"github/copilot.vim"},
     {
       "ray-x/go.nvim",
       dependencies = {
