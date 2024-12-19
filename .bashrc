@@ -148,6 +148,7 @@ alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias hostname="cat /etc/hostname"
 alias vim="nvim"
+alias zwift="CONTAINER_TOOL='sudo docker' zwift"
 
 # Functions
 function home() {
