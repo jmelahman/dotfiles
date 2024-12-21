@@ -89,18 +89,31 @@ require("lazy").setup({
       config = function()
         local lspconfig = require('lspconfig')
         lspconfig.pyright.setup({})
+        lspconfig.tsserver.setup({})
         lspconfig.gopls.setup({
-            on_attach = function(client)
-                -- Enable format on save
-                if client.server_capabilities.documentFormattingProvider then
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        group = vim.api.nvim_create_augroup("Format", { clear = true }),
-                        pattern = '*.go',
-                        callback = function() vim.lsp.buf.format() end
-                    })
-                end
-            end,
-          })
+          on_attach = function(client)
+            -- Enable format on save
+            if client.server_capabilities.documentFormattingProvider then
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                pattern = "*.js,*.jsx,*.ts,*.tsx",
+                callback = function() vim.lsp.buf.format({ async = false }) end,
+              })
+            end
+          end,
+        })
+        lspconfig.gopls.setup({
+          on_attach = function(client)
+            -- Enable format on save
+            if client.server_capabilities.documentFormattingProvider then
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                pattern = '*.go',
+                callback = function() vim.lsp.buf.format() end
+              })
+            end
+          end,
+        })
       end,
     },
     -- This is only here to activate with avante.
