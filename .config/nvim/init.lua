@@ -89,8 +89,7 @@ require("lazy").setup({
       config = function()
         local lspconfig = require('lspconfig')
         lspconfig.pyright.setup({})
-        lspconfig.tsserver.setup({})
-        lspconfig.gopls.setup({
+        lspconfig.ts_ls.setup({
           on_attach = function(client)
             -- Enable format on save
             if client.server_capabilities.documentFormattingProvider then
@@ -170,7 +169,7 @@ require("lazy").setup({
 })
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python", "go", "rust"},
+  ensure_installed = {"python", "typescript", "go", "rust"},
   highlight = { enable = true },
 }
 
