@@ -2,6 +2,7 @@
 set -eo pipefail
 
 ERROR_LOG="$(mktemp)"
+FILES=()
 
 function notify_on_error {
   if command -v notify-send > /dev/null; then
@@ -21,7 +22,10 @@ git pull -q origin master > /dev/null 2> "$ERROR_LOG"
 if command -v pacman > /dev/null; then
   pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
 fi
-ripsecrets --strict-ignore $(git diff --cached --name-only --diff-filter=ACM) > "$ERROR_LOG" 2>&1
+git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
+  FILES+=("$file")
+done
+ripsecrets --strict-ignore "${FILES[@]}" > "$ERROR_LOG" 2>&1
 
 if [ -n "$(git status --short)" ]; then
   git commit --quiet -am "Auto-sync $(date)" 2> "$ERROR_LOG"
