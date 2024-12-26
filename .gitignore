@@ -22,6 +22,7 @@
 !/.config/pip/pip.conf
 !/.config/systemd/user/dot-sync.service
 !/.config/systemd/user/dot-sync.timer
+!/.config/uv/uv.toml
 !/.face
 !/.gitattributes
 !/.gitconfig
