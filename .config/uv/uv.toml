@@ -1,5 +1,5 @@
-allow-insecure-host = ["ava.lan:5001"]
-
-[pip]
-index-url = "http://ava.lan:5001/index"
+#allow-insecure-host = ["ava.lan:5001"]
+#
+#[pip]
+#index-url = "http://ava.lan:5001/index"
 #extra-index-url = ["https://pypi.org/simple"]
