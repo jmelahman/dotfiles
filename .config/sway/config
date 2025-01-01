@@ -21,7 +21,7 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/.backgrounds/jelly4.jpg fill
 #
 # Example configuration:
 #
@@ -212,17 +212,22 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command i3status
 
     colors {
         statusline #ffffff
-        background #323232
+        background #000000
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+#
+# Personal Config:
+#
+gaps inner 8
 
 include /etc/sway/config.d/*
