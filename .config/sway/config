@@ -228,6 +228,8 @@ bar {
 #
 # Personal Config:
 #
+focus_follows_mouse no
+
 gaps inner 8
 for_window [app_id=".*"] titlebar_padding 0
 for_window [app_id=".*"] border pixel 1
