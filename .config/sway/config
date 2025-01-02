@@ -150,7 +150,7 @@ output * bg ~/.backgrounds/jelly4.jpg fill
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+g floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -221,7 +221,7 @@ bar {
 
     colors {
         statusline #f0f0f0
-        background #000000
+        background #00000000
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
@@ -235,10 +235,6 @@ gaps inner 8
 for_window [app_id=".*"] titlebar_padding 0
 for_window [app_id=".*"] border pixel 1
 
-#client.focused #8B0000 #8B0000 #FFFFFF #8B0000
-#client.unfocused #4B0000 #4B0000 #AAAAAA #4B0000
-#client.urgent #B22222 #B22222 #FFFFFF #B22222
-#client.focused_inactive #6A0000 #6A0000 #DDDDDD #6A0000
 client.focused #8B0000 #8B0000 #FFFFFF #8B0000
 client.unfocused #2E2E2E #2E2E2E #AAAAAA #2E2E2E
 client.urgent #B22222 #B22222 #FFFFFF #B22222
@@ -251,5 +247,7 @@ blur enable
 blur_xray enable
 shadows enable
 corner_radius 8
+
+layer_effects "panel" blur enable
 
 include /etc/sway/config.d/*
