@@ -20,7 +20,7 @@ cd "$HOME" 2> "$ERROR_LOG"
 
 git pull -q origin master > /dev/null 2> "$ERROR_LOG"
 if command -v pacman > /dev/null; then
-  pacman -Qqs > .arch.conf 2> "$ERROR_LOG"
+  pacman -Qqe > .arch.conf 2> "$ERROR_LOG"
 fi
 git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
   FILES+=("$file")
