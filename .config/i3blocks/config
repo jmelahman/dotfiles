@@ -1,0 +1,28 @@
+separator=false
+separator_block_width=12
+
+[clock]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=1
+min_width=1000
+align=center
+
+[load]
+command=uptime | awk -F'load average:' '{print $2}'
+interval=10
+
+[memory]
+command=free -h --si | awk '/^Mem/ {print $3 "/" $2}'
+interval=10
+
+[disk]
+command=df -h / | awk 'NR==2 {print $3 "/" $2}'
+interval=30
+
+[temperature]
+command=sensors | awk '/^Package id 0:/ {print $4}'
+interval=5
+
+[network]
+command=nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2 || echo "Disconnected"
+interval=10
