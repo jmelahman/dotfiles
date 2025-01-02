@@ -222,7 +222,7 @@ bar {
     colors {
         statusline #f0f0f0
         background #00000000
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #323232 #323232 #5c5c5c
     }
 }
 
@@ -245,7 +245,6 @@ client.focused_inactive #1A1A1A #1A1A1A #DDDDDD #1A1A1A
 #
 blur enable
 blur_xray enable
-shadows enable
 corner_radius 8
 
 layer_effects "panel" blur enable

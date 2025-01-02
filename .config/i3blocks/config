@@ -4,7 +4,7 @@ separator_block_width=12
 [clock]
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=1
-min_width=1000
+min_width=880
 align=center
 
 [load]
