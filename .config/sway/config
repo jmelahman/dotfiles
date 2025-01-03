@@ -250,6 +250,10 @@ client.focused_inactive #1A1A1A #1A1A1A #DDDDDD #1A1A1A
 
 exec_always --no-startup-id ~/.config/sway/bluetooth.sh
 
+input "0255_Touchpad" {
+    tap enabled # Enables touch-to-click functionality
+}
+
 #
 # Swayfx
 #
