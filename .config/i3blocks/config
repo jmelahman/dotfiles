@@ -26,3 +26,7 @@ interval=5
 [network]
 command=nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2 || echo "Disconnected"
 interval=10
+
+[battery]
+command=acpi -b | awk -F', ' '{gsub(/%/,""); if ($2 ~ /Discharging/) {icon="🔋"} else {icon="🔌"} print icon " " $2% "}'
+interval=30
