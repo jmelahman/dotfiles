@@ -28,5 +28,5 @@ command=nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2 || echo "Di
 interval=10
 
 [battery]
-command=acpi -b | awk -F', ' '{gsub(/%/,""); if ($2 ~ /Discharging/) {icon="🔋"} else {icon="🔌"} print icon " " $2 "%"}'
-interval=30
+command=acpi -b | awk -F', ' '{if ($1 ~ /Discharging/) {icon="🔋"} else {icon="🔌"} print icon " " $2}'
+interval=10
