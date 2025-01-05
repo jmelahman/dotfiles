@@ -21,7 +21,6 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec swaybg -i ~/.backgrounds/NaJanela.gif -m fill
 #
 # Example configuration:
 #
