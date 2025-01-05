@@ -146,6 +146,8 @@ alias kbdoff="sudo sys76-kb set -b 0"
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias stop="pkill -STOP"
+alias resume="pkill -CONT"
 alias hostname="cat /etc/hostname"
 alias vim="nvim"
 alias zwift="CONTAINER_TOOL='sudo docker' zwift"
