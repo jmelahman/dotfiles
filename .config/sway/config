@@ -216,20 +216,22 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    font pango:Jetbrains Mono 10
+#bar {
+#    position top
+#    font pango:Jetbrains Mono 10
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command i3blocks
+#
+#    colors {
+#        statusline #f0f0f0
+#        background #00000000
+#        inactive_workspace #323232 #323232 #5c5c5c
+#    }
+#}
+exec_always --no-startup-id waybar
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command waybar
-
-    colors {
-        statusline #f0f0f0
-        background #00000000
-        inactive_workspace #323232 #323232 #5c5c5c
-    }
-}
 
 #
 # Personal Config:
