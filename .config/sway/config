@@ -21,6 +21,7 @@ set $menu wmenu-run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+exec mpvpaper -o "no-audio --loop --no-border --fullscreen" '*' ~/.backgrounds/divoom.mp4
 #
 # Example configuration:
 #
