@@ -1,7 +1,7 @@
 /*default color scheme */
 @define-color bg_color rgba(0, 0, 0, 0.7);
 @define-color fg_color #f00;
-@define-color accent_color rgba(20, 20, 20, 0.2);
+@define-color accent_color rgba(20, 20, 20, 0.4);
 @define-color base_color #ffffff;
 @define-color text_color #3C3C3C;
 @define-color selected_bg_color #f07746;
@@ -68,11 +68,17 @@ window {
     background-color: @bg_color;
 }
 
-window {
-    border-radius: 15px;
-}
-
 entry {
     background-color: @accent_color;
     border-radius: 5px;
+    padding: 12px;
+}
+
+label {
+    padding: 4px;
+}
+
+treeview *:hover,
+box *:hover {
+    background-color: @accent_color;
 }
