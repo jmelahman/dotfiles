@@ -150,7 +150,7 @@ alias stop="pkill -STOP"
 alias resume="pkill -CONT"
 alias hostname="cat /etc/hostname"
 alias vim="nvim"
-alias zwift="CONTAINER_TOOL='sudo docker' zwift"
+alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
 
 # Functions
 function home() {
