@@ -230,6 +230,8 @@ for_window [app_id=".*"] titlebar_padding 0
 for_window [app_id=".*"] border pixel 1
 for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 
+font pango:Inter 10
+
 client.focused #8B0000 #8B0000 #FFFFFF #8B0000
 client.unfocused #2E2E2E #2E2E2E #AAAAAA #2E2E2E
 client.urgent #B22222 #B22222 #FFFFFF #B22222
