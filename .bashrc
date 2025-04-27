@@ -152,6 +152,8 @@ alias hostname="cat /etc/hostname"
 alias vim="nvim"
 alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
+alias enable="swaymsg output eDP-1 enable"
+alias disable="swaymsg output eDP-1 disable"
 
 # Functions
 function home() {
