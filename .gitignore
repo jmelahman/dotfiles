@@ -1,6 +1,7 @@
 *
 !/lint
 !/dot-sync
+!/swap.sh
 !/.alacritty.toml
 !/.arch.conf
 !/.bashrc
