@@ -51,6 +51,8 @@ else
   export IN_DOCKER=false
 fi
 
+export OLLAMA_HOST=http://ava.lan:11434
+
 function parse_git_branch() {
   local branch
   local stat
