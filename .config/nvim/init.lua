@@ -150,11 +150,18 @@ require("lazy").setup({
       event = "VeryLazy",
       lazy = false,
       opts = {
-        provider = "ollama",
+        provider = "openai",
         ollama = {
           model = "deepseek-coder",
           endpoint = "http://ava.lan:11434",
-        }
+        },
+        openai = {
+          endpoint = "https://openrouter.ai/api/v1",
+          model = "deepseek/deepseek-chat-v3-0324",
+          api_key_name = "OPENROUTER_API_KEY",
+          temperature = 0.6,
+          max_tokens = 8000,
+        },
       },
       build = "make",
       dependencies = {
