@@ -52,6 +52,7 @@ else
 fi
 
 export OLLAMA_HOST=http://ava.lan:11434
+export OLLAMA_API_BASE=$OLLAMA_HOST
 
 function parse_git_branch() {
   local branch

@@ -151,35 +151,10 @@ require("lazy").setup({
       lazy = false,
       opts = {
         provider = "ollama",
-        vendors = {
-          ---@type AvanteProvider
-          ollama = {
-            api_key_name = '',
-            endpoint = "http://ava.lan:11434/v1",
-            model = "phi4-mini",
-            --- model = "deepseek-r1",
-            --- model = "codellama",
-            parse_curl_args = function(opts, code_opts)
-              return {
-                url = opts.endpoint .. "/chat/completions",
-                headers = {
-                  ["Accept"] = "application/json",
-                  ["Content-Type"] = "application/json",
-                  ['x-api-key'] = 'ollama',
-                },
-                body = {
-                  model = opts.model,
-                  messages = require("avante.providers").copilot.parse_messages(code_opts),
-                  max_tokens = 2048,
-                  stream = true,
-                },
-              }
-            end,
-            parse_response_data = function(data_stream, event_state, opts)
-              require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-            end,
-          },
-        },
+        ollama = {
+          model = "deepseek-coder",
+          endpoint = "http://ava.lan:11434",
+        }
       },
       build = "make",
       dependencies = {
