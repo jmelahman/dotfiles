@@ -11,6 +11,12 @@ if [ -d "$HOME/.bash_completion.d" ]; then
     done
 fi
 
+if [ -f "$HOME/.env" ]; then
+  while read -r line; do
+    export "$line"
+  done < "$HOME/.env"
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
