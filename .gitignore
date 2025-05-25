@@ -2,7 +2,7 @@
 !/lint
 !/dot-sync
 !/swap.sh
-!/.alacritty.toml
+!/.aider.conf.yml
 !/.arch.conf
 !/.bashrc
 !/.bash_profile
