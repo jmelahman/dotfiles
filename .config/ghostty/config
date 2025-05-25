@@ -1,0 +1,18 @@
+# Font
+font-family = "JetBrains Mono"
+font-style = "Bold"
+font-size = 11.0
+
+# Cursor
+cursor-color = "#ff0000"
+cursor-style = block
+
+# Foreground and background
+foreground = "#ff0000"
+background = "#000000"
+background-opacity = 0.05
+theme = "Builtin Dark"
+
+# Tabs
+gtk-wide-tabs = false
+gtk-tabs-location = bottom

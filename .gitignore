@@ -10,6 +10,8 @@
 !/.bazelrc
 !/.config/beets/config.yaml
 !/.config/docker/daemon.json
+!/.config/ghostty/
+!/.config/kitty/
 !/.config/nvim/
 /.config/nvim/lazy-lock.json
 !/.config/pip/pip.conf
