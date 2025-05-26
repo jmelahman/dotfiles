@@ -235,6 +235,8 @@ client.unfocused #2E2E2E #2E2E2E #AAAAAA #2E2E2E
 client.urgent #B22222 #B22222 #FFFFFF #B22222
 client.focused_inactive #1A1A1A #1A1A1A #DDDDDD #1A1A1A
 
+bindsym $mod+Shift+Return exec ~/.local/bin/window-screenshot
+
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
