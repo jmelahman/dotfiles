@@ -57,7 +57,7 @@ else
   export IN_DOCKER=false
 fi
 
-export OLLAMA_HOST=http://ava.lan:11434
+export OLLAMA_HOST=http://ollama.home
 export OLLAMA_API_BASE=$OLLAMA_HOST
 
 function parse_git_branch() {

@@ -1,5 +1,5 @@
-#build --bes_results_url=http://ava.lan:8080/invocation/
-#build --bes_backend=grpc://ava.lan:1985
-#build --remote_cache=grpc://ava.lan:1985
-#build --remote_timeout=3600
+build --bes_results_url=http://buildbuddy.home/invocation/
+build --bes_backend=grpc://buildbuddy.home:1985
+build --remote_cache=grpc://buildbuddy.home:1985
+build --remote_timeout=3600
 build --jobs=2

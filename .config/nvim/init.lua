@@ -152,7 +152,7 @@ require("lazy").setup({
         provider = "openai",
         ollama = {
           model = "deepseek-coder",
-          endpoint = "http://ava.lan:11434",
+          endpoint = "http://ollama.home",
         },
         openai = {
           endpoint = "https://openrouter.ai/api/v1",
