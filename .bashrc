@@ -163,7 +163,7 @@ alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
-alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - screenshot.png"
+alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - ~/Pictures/screenshot.png"
 alias chat="ollama run deepseek-r1:8b"
 
 # Functions
