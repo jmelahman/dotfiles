@@ -164,6 +164,7 @@ alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{prin
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
 alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - screenshot.png"
+alias chat="ollama run deepseek-r1:8b"
 
 # Functions
 function home() {
