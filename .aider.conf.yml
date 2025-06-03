@@ -1,4 +1,4 @@
 # model: "openrouter/deepseek/deepseek-chat"
-model: "openrouter/deepseek/deepseek-chat-v3-0324:free"
+model: "openrouter/deepseek/deepseek-r1-0528-qwen3-8b:free"
 show-model-warnings: false
 dark-mode: true
