@@ -11,6 +11,12 @@ if [ -d "$HOME/.bash_completion.d" ]; then
     done
 fi
 
+if [ -x "$(command -v fzf)" ] && [ -r /usr/share/fzf/key-bindings.bash ]
+then
+    source /usr/share/fzf/key-bindings.bash
+fi
+
+
 if [ -f "$HOME/.env" ]; then
   while read -r line; do
     export "$line"
@@ -153,7 +159,9 @@ alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
 alias grep='grep --color=auto'
 alias kbdoff="sudo sys76-kb set -b 0"
 alias ls='ls --color=auto'
+alias less='less -R'
 alias ll='ls -l'
+alias rg='rg --color=always'
 alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias stop="pkill -STOP"
 alias resume="pkill -CONT"
