@@ -157,6 +157,7 @@ alias gd="git diff $(git merge-base origin/master HEAD) --name-only"
 alias gb='git for-each-ref --sort=-committerdate refs/heads/'
 alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
 alias grep='grep --color=auto'
+alias nit='git commit -am "nit"'
 alias kbdoff="sudo sys76-kb set -b 0"
 alias ls='ls --color=auto'
 alias less='less -R'
