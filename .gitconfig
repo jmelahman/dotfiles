@@ -15,22 +15,40 @@
   name = Jamison Lahman
 [push]
   default = current
+[fetch]
+  prune = true
 [pull]
   rebase = true
 [rebase]
   autostash = true
 [lfs]
-	locksverify = false
+  locksverify = false
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [init]
-	defaultBranch = master
+  defaultBranch = master
 [core]
-	hooksPath = /home/jamison/.githooks
+  hooksPath = /home/jamison/.githooks
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  conflictStyle = zdiff3
+[delta]
+  side-by-side = true
+  syntax-theme= OneHalfDark
+  hyperlinks = true
+  file-style = omit
+  hunk-header-style = file syntax
+  hunk-header-decoration-style = ul blue
+[difftool]
+  prompt = false
+[diff]
+  tool = kitty
+[difftool "kitty"]
+  cmd = kitty +kitten diff \"$LOCAL\" \"$REMOTE\"
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
-[fetch]
-	prune = true

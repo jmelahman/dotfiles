@@ -11,6 +11,12 @@ if [ -d "$HOME/.bash_completion.d" ]; then
     done
 fi
 
+if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+    source "$KITTY_INSTALLATION_DIR/shell-integration/$(basename $SHELL)/kitty.bash"
+else
+    source <(kitty +kitten shell-integration)
+fi
+
 if [ -x "$(command -v fzf)" ] && [ -r /usr/share/fzf/key-bindings.bash ]
 then
     source /usr/share/fzf/key-bindings.bash
@@ -168,6 +174,7 @@ alias stop="pkill -STOP"
 alias resume="pkill -CONT"
 alias hostname="cat /etc/hostname"
 alias vim="nvim"
+alias kitty="kitty --session ~/.config/kitty/startup-session.conf"
 alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
 alias enable="swaymsg output eDP-1 enable"
