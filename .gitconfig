@@ -39,7 +39,7 @@
   conflictStyle = zdiff3
 [delta]
   side-by-side = true
-  syntax-theme= OneHalfDark
+  syntax-theme = Coldark-Dark
   hyperlinks = true
   file-style = omit
   hunk-header-style = file syntax
