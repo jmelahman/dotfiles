@@ -41,6 +41,8 @@
   side-by-side = true
   syntax-theme = Coldark-Dark
   hyperlinks = true
+  wrap-max-lines = 0
+  blame-palette = "#000000 #111111 #222222"
   file-style = omit
   hunk-header-style = file syntax
   hunk-header-decoration-style = ul blue
