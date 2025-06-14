@@ -42,6 +42,7 @@
   syntax-theme = Coldark-Dark
   hyperlinks = true
   wrap-max-lines = 0
+  tabs = 2
   blame-palette = "#000000 #111111 #222222"
   file-style = omit
   hunk-header-style = file syntax
