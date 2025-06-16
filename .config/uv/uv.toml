@@ -1,5 +1,5 @@
-allow-insecure-host = ["ava.lan:5001"]
+allow-insecure-host = ["proxpi.home"]
 
 [pip]
-index-url = "http://ava.lan:5001/index"
+index-url = "http://proxpi.home/index/"
 extra-index-url = ["https://pypi.org/simple"]
