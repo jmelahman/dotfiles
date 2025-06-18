@@ -7,6 +7,7 @@ alias:
   - "chat:openrouter/deepseek/deepseek-r1-0528-qwen3-8b:free"
   - "r1:openrouter/deepseek/deepseek-chat-v3-0324:free"
 model: "claude"
-weak-model: "devstral"
+weak-model: "chat"
+subtree-only: true
 show-model-warnings: false
 dark-mode: true
