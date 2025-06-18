@@ -6,8 +6,11 @@ alias:
   - "devstral:openrouter/mistralai/devstral-small:free"
   - "chat:openrouter/deepseek/deepseek-r1-0528-qwen3-8b:free"
   - "r1:openrouter/deepseek/deepseek-chat-v3-0324:free"
-model: "claude"
-weak-model: "chat"
+  # Local
+  - "qwen3:ollama/qwen3:0.6b"
+  - "coder:ollama/deepseek-coder:1.3b"
+model: "devstral"
+weak-model: "coder"
 subtree-only: true
 show-model-warnings: false
 dark-mode: true
