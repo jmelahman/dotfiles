@@ -25,7 +25,7 @@ fi
 git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
   FILES+=("$file")
 done
-if command -v ripsecrets; then
+if command -v ripsecrets > /dev/null; then
   ripsecrets --strict-ignore "${FILES[@]}" > "$ERROR_LOG" 2>&1
 fi
 
