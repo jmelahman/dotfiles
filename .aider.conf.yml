@@ -9,8 +9,8 @@ alias:
   # Local
   - "qwen3:ollama/qwen3:0.6b"
   - "coder:ollama/deepseek-coder:1.3b"
-model: "devstral"
-weak-model: "coder"
+model: "claude"
+weak-model: "devstral"
 subtree-only: true
 show-model-warnings: false
 dark-mode: true
