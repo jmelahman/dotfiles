@@ -1,62 +1,62 @@
 [branch "master"]
-  remote = origin
-  merge = refs/heads/master
+	remote = origin
+	merge = refs/heads/master
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 [color "status"]
-  added = green bold
-  changed = yellow bold
-  untracked = white bold
+	added = green bold
+	changed = yellow bold
+	untracked = white bold
 [user]
-  email = jamison@lahman.dev
-  name = Jamison Lahman
+	email = jamison@lahman.dev
+	name = Jamison Lahman
 [push]
-  default = current
+	default = current
 [fetch]
-  prune = true
+	prune = true
 	writeCommitGraph = true
 [pull]
-  rebase = true
+	rebase = true
 [rebase]
-  autostash = true
+	autostash = true
 [lfs]
-  locksverify = false
+	locksverify = false
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [init]
-  defaultBranch = master
+	defaultBranch = master
 [core]
-  hooksPath = /home/jamison/.githooks
-  pager = delta
+	hooksPath = /home/jamison/.githooks
+	pager = delta
 	fsmonitor = true
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [merge]
-  conflictStyle = zdiff3
+	conflictStyle = zdiff3
 [delta]
-  side-by-side = true
-  syntax-theme = Coldark-Dark
-  hyperlinks = true
-  wrap-max-lines = 0
-  tabs = 2
-  blame-palette = "#000000 #111111 #222222"
-  file-style = omit
-  hunk-header-style = file syntax
-  hunk-header-decoration-style = ul blue
+	side-by-side = true
+	syntax-theme = Coldark-Dark
+	hyperlinks = true
+	wrap-max-lines = 0
+	tabs = 2
+	blame-palette = "#000000 #111111 #222222"
+	file-style = omit
+	hunk-header-style = file syntax
+	hunk-header-decoration-style = ul blue
 [difftool]
-  prompt = false
+	prompt = false
 [diff]
-  tool = kitty
+	tool = kitty
 [difftool "kitty"]
-  cmd = kitty +kitten diff \"$LOCAL\" \"$REMOTE\"
+	cmd = kitty +kitten diff \"$LOCAL\" \"$REMOTE\"
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
 [rerere]
 	enabled = true
 [branch]
@@ -66,5 +66,5 @@
 [maintenance]
 	repo = /home/jamison
 	repo = /home/jamison/code/monorepo
-  auto = false
-  strategy = incremental
+	auto = false
+	strategy = incremental
