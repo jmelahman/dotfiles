@@ -61,3 +61,6 @@
 	sort = -committerdate
 [gpg]
 	format = ssh
+[maintenance]
+	repo = /home/jamison
+	repo = /home/jamison/code/monorepo
