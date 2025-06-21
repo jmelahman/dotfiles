@@ -70,4 +70,4 @@
 	auto = false
 	strategy = incremental
 [commit]
-	gpgsign = false
+	gpgsign = true
