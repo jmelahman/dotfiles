@@ -23,6 +23,7 @@
 	rebase = true
 [rebase]
 	autostash = true
+	updateRefs = true
 [lfs]
 	locksverify = false
 [filter "lfs"]
