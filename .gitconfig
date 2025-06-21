@@ -13,6 +13,7 @@
 [user]
 	email = jamison@lahman.dev
 	name = Jamison Lahman
+	signingkey = /home/jamison/.ssh/id_rsa.pub
 [push]
 	default = current
 [fetch]
@@ -68,3 +69,5 @@
 	repo = /home/jamison/code/monorepo
 	auto = false
 	strategy = incremental
+[commit]
+	gpgsign = false
