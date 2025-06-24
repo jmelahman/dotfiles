@@ -147,17 +147,21 @@ require("lazy").setup({
       event = "VeryLazy",
       lazy = false,
       opts = {
-        provider = "openai",
-        ollama = {
-          model = "deepseek-coder",
-          endpoint = "http://ollama.home",
-        },
-        openai = {
-          endpoint = "https://openrouter.ai/api/v1",
-          model = "anthropic/claude-sonnet-4",
-          api_key_name = "OPENROUTER_API_KEY",
-          temperature = 0.6,
-          max_tokens = 8000,
+        providers = {
+          ollama = {
+            model = "devstral",
+            endpoint = "http://ollama.home",
+            timeout = 30000,
+          },
+          openai = {
+            endpoint = "https://openrouter.ai/api/v1",
+            model = "anthropic/claude-sonnet-4",
+            api_key_name = "OPENROUTER_API_KEY",
+            max_tokens = 8000,
+            extra_request_body = {
+              temperature = 0.6,
+            },
+          },
         },
       },
       build = "make",
