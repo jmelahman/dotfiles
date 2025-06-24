@@ -114,8 +114,6 @@ require("lazy").setup({
         })
       end,
     },
-    -- This is only here to activate with avante.
-    -- {"github/copilot.vim"},
     {
       "ray-x/go.nvim",
       dependencies = {
@@ -169,7 +167,6 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons",
-        "zbirenbaum/copilot.lua",
       },
     },
   },
