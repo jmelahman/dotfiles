@@ -176,6 +176,8 @@ alias hostname="cat /etc/hostname"
 alias vim="nvim"
 alias kitty="kitty --session ~/.config/kitty/startup-session.conf"
 alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
+# TODO: Remove python3.12 once https://github.com/Aider-AI/aider/issues/3660 is resolved.
+alias aider="uvx --python=python3.12 --from=aider-chat aider"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
