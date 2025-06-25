@@ -41,7 +41,7 @@ exec mpvpaper -o "no-audio --loop --no-border --fullscreen" '*' ~/.backgrounds/d
 #
 # Example configuration:
 #
-bindsym $mod+Shift+Delete exec swaylock  -f -c 000000
+bindsym Ctrl+Alt+Delete exec swaylock  -f -c 000000
 exec swayidle -w timeout 300 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
