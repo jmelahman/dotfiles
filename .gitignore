@@ -30,6 +30,7 @@
 !/.mozilla/firefox/jamison.default/user.js
 !/.mozilla/firefox/jamison.default/userChrome.css
 !/.ripgreprc
+!/.ruff.toml
 !/.themes/
 !/.vimrc
 !README.md
