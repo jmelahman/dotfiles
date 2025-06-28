@@ -72,6 +72,9 @@ fi
 export OLLAMA_HOST=http://ollama.home
 export OLLAMA_API_BASE=$OLLAMA_HOST
 
+# For torch with AMD GPU.
+export HSA_OVERRIDE_GFX_VERSION=11.0.0
+
 function parse_git_branch() {
   local branch
   local stat
@@ -159,7 +162,6 @@ alias gp='git push -u'
 alias gr='git reset --soft HEAD~1 && git commit --amend --no-edit'
 alias gg='git log --graph --oneline --all --decorate'
 alias ggm='git log --graph --oneline --decorate origin/master HEAD'
-alias gd="git diff $(git merge-base origin/master HEAD) --name-only"
 alias gb='git for-each-ref --sort=-committerdate refs/heads/'
 alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
 alias grep='grep --color=auto'
