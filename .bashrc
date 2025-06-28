@@ -11,7 +11,8 @@ if [ -d "$HOME/.bash_completion.d" ]; then
     done
 fi
 
-if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+KITTY_INSTALLATION_DIR="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}"
+if [[ -n "$KITTY_INSTALLATION_DIR/shell-integration" ]]; then
     source "$KITTY_INSTALLATION_DIR/shell-integration/$(basename $SHELL)/kitty.bash"
 else
     source <(kitty +kitten shell-integration)
