@@ -87,7 +87,30 @@ require("lazy").setup({
       },
       config = function()
         local lspconfig = require('lspconfig')
-        lspconfig.pyright.setup({})
+        lspconfig.pyright.setup({
+          disableOrganizeImports = true,
+        })
+        lspconfig.ruff.setup({
+          cmd = { "uvx", "ruff", "server" },
+          on_attach = function(client)
+            -- Enable fix all auto-fixable problems on save
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              group = vim.api.nvim_create_augroup("RuffFixAll", { clear = true }),
+              pattern = "*.py",
+              callback = function()
+                -- Apply all auto-fixable code actions
+                vim.lsp.buf.code_action({
+                  context = { only = { "source.fixAll.ruff" } },
+                  apply = true,
+                })
+                -- Also format the document
+                if client.server_capabilities.documentFormattingProvider then
+                  vim.lsp.buf.format({ async = false })
+                end
+              end,
+            })
+          end,
+        })
         lspconfig.ts_ls.setup({
           on_attach = function(client)
             -- Enable format on save
@@ -186,3 +209,4 @@ require'nvim-treesitter.configs'.setup {
 vim.cmd [[ colorscheme jvim ]]
 
 vim.keymap.set('n', '<leader>gi', '<cmd>GoImports<CR>', { desc = "Run GoImports" })
+vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Actions" })
