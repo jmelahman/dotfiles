@@ -196,6 +196,10 @@ require("lazy").setup({
         "nvim-tree/nvim-web-devicons",
       },
     },
+    {
+      "cgrindel/vim-bazelrc",
+      ft = "bazelrc",
+    },
   },
   -- automatically check for plugin updates
   checker = { enabled = true , notify = false },
