@@ -208,9 +208,9 @@ function cd() {
 
 function rgplace() {
     if [[ $# -lt 2 ]]; then
-        echo "Usage: rgplace <search_pattern> <replacement> [file_pattern]"
-        echo "Example: rgplace 'foo' 'bar' '*.txt'"
-        return 1
+      echo "Usage: rgplace <search_pattern> <replacement> [file_pattern]"
+      echo "Example: rgplace 'foo' 'bar' '*.txt'"
+      return 1
     fi
 
     local search_pattern=$1
@@ -221,10 +221,8 @@ function rgplace() {
       file_pattern="*"
     fi
 
-    rg --files -g "$file_pattern" | while read -r file; do
-        if rg -q "$search_pattern" "$file"; then
-            sed -i "s/${search_pattern}/${replacement}/g" "$file"
-        fi
+    rg --files-with-matches "$search_pattern" --glob "$file_pattern" | while read -r file; do
+      sed -i "s|$search_pattern|$replacement|g" "$file"
     done
 }
 
