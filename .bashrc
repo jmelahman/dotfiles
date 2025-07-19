@@ -195,7 +195,7 @@ alias snip="slurp | grim -g - ~/Pictures/screenshot.png"
 alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - ~/Pictures/screenshot.png"
 alias chat="ollama run deepseek-j1:8b"
 alias weak="ollama run jqwen3:0.6b"
-alias sober="echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))"
+alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 
 # Functions
 function home() {
