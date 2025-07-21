@@ -12,6 +12,7 @@
 !/.config/docker/daemon.json
 !/.config/htop/htoprc
 !/.config/kitty/
+!/.config/mimeapps.list
 !/.config/nvim/
 /.config/nvim/lazy-lock.json
 !/.config/pip/pip.conf
