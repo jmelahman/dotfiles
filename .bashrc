@@ -162,13 +162,10 @@ __user_prompt_command() {
 
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-alias gl="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gs='git status'
-alias gc='git checkout'
-alias gp='git push -u'
+alias gl="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
 alias gr='git reset --soft HEAD~1 && git commit --amend --no-edit'
 alias gg='git log --graph --oneline --all --decorate'
-alias ggm='git log --graph --oneline --decorate origin/master HEAD'
 alias gb='git for-each-ref --sort=-committerdate refs/heads/'
 alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
 alias grep='grep --color=auto'
@@ -234,6 +231,7 @@ function ga() {
   fi
   git commit --amend -m "${message}"
 }
+
 function gsp() {
   local subtree="${1:-}"
   local toplevel
