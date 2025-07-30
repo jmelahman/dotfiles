@@ -34,4 +34,5 @@
 !/.ruff.toml
 !/.themes/
 !/.vimrc
+!/.zshrc
 !README.md

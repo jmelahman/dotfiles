@@ -1,0 +1,163 @@
+# Enable completion
+autoload -Uz compinit
+compinit
+
+# Prompt
+PROMPT='%F{cyan}%n@%m%f:%F{yellow}%~%f %# '
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+
+# Tab completion tweaks
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{green}%d%f'
+zstyle ':completion:*' list-colors ''
+
+# Options
+setopt autocd              # cd into directories without typing 'cd'
+setopt correct             # auto-correct commands
+setopt no_beep             # disable bell
+setopt prompt_subst        # allow command substitution in prompt
+
+# Aliases
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias gs='git status'
+alias gl="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias gr='git reset --soft HEAD~1 && git commit --amend --no-edit'
+alias gg='git log --graph --oneline --all --decorate'
+alias gb='git for-each-ref --sort=-committerdate refs/heads/'
+alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
+alias grep='grep --color=auto'
+alias nit='git commit -am "nit"'
+alias kbdoff="sudo sys76-kb set -b 0"
+alias less='less -R'
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias rg='rg --color=always'
+alias power="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+alias stop="pkill -STOP"
+alias resume="pkill -CONT"
+alias hostname="cat /etc/hostname"
+alias vim="nvim"
+alias kitty="kitty --session ~/.config/kitty/startup-session.conf"
+alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
+# TODO: Remove python3.12 once https://github.com/Aider-AI/aider/issues/3660 is resolved.
+alias aider="uvx --python=3.12 --from=aider-chat aider"
+alias openhands="uvx --python=3.12 --from=openhands-ai openhands"
+alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
+alias enable="swaymsg output eDP-1 enable"
+alias disable="swaymsg output eDP-1 disable"
+alias snip="slurp | grim -g - ~/Pictures/screenshot.png"
+alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - ~/Pictures/screenshot.png"
+alias chat="ollama run qwen3:30b"
+alias coder="ollama run devstral:latest"
+alias weak="ollama run jqwen3:0.6b"
+alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
+
+# Functions
+function home() {
+  export home="$PWD"
+}
+
+function cd() {
+  HOME="${home:=$HOME}" builtin cd "$@"
+}
+
+function rgplace() {
+    if [[ $# -lt 2 ]]; then
+      echo "Usage: rgplace <search_pattern> <replacement> [file_pattern]"
+      echo "Example: rgplace 'foo' 'bar' '*.txt'"
+      return 1
+    fi
+
+    local search_pattern=$1
+    local replacement=$2
+    local file_pattern=$3
+
+    if [ -z "$file_pattern" ]; then
+      file_pattern="*"
+    fi
+
+    rg --files-with-matches "$search_pattern" --glob "$file_pattern" | while read -r file; do
+      sed -i "s|$search_pattern|$replacement|g" "$file"
+    done
+}
+
+function ga() {
+  local message="$1"
+  if [ -z "$message" ]; then
+    >&2 echo "Commit message is required."
+    return 2
+  fi
+  git commit --amend -m "${message}"
+}
+
+function gsp() {
+  local subtree="${1:-}"
+  local toplevel
+  toplevel=$(git rev-parse --show-toplevel)
+  if [ -z "$subtree" ]; then
+    >&2 echo "Missing argument 'subtree'."
+    echo "Pick one of:"
+    # https://stackoverflow.com/a/18339297
+    git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq | xargs -I {} bash -c 'if [ -d $(git rev-parse --show-toplevel)/{} ] ; then echo "  {}"; fi'
+    return 2
+  fi
+  git -C "$toplevel" subtree push --prefix "$subtree" "git@github.com:jmelahman/$(basename "${subtree}").git" master
+}
+
+# Kitty init
+KITTY_INSTALLATION_DIR="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}"
+if [[ -n "$KITTY_INSTALLATION_DIR/shell-integration" ]]; then
+    source "$KITTY_INSTALLATION_DIR/shell-integration/$(basename $SHELL)/kitty.zsh"
+else
+    source <(kitty +kitten shell-integration)
+fi
+
+# FZF init
+if [ -x "$(command -v fzf)" ] && [ -r /usr/share/fzf/key-bindings.zsh ]
+then
+    source /usr/share/fzf/key-bindings.zsh
+fi
+
+# Load env
+if [ -f "$HOME/.env" ]; then
+  while read -r line; do
+    export "$line"
+  done < "$HOME/.env"
+fi
+
+# Vim as default
+export EDITOR="vim"
+
+# Color LS output to differentiate between directories and files
+export LS_OPTIONS="--color=auto"
+export CLICOLOR="Yes"
+export LSCOLOR=""
+
+# Customize Path
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+export PATH=$HOME/code/monorepo/bin:$HOME/.local/bin:$GOBIN:$PATH
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# https://wiki.archlinux.org/title/Docker#Rootless_Docker_daemon
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+if [ -f /.dockerenv ]; then
+  export IN_DOCKER=true
+else
+  export IN_DOCKER=false
+fi
+
+export OLLAMA_HOST=http://ollama.home
+export OLLAMA_API_BASE="$OLLAMA_HOST"
+
+# For torch with AMD GPU
+export HSA_OVERRIDE_GFX_VERSION=11.0.0
