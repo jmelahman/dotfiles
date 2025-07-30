@@ -22,6 +22,16 @@ setopt correct             # auto-correct commands
 setopt no_beep             # disable bell
 setopt prompt_subst        # allow command substitution in prompt
 
+bindkey -e                 # enable emacs bindings
+
+# Ctrl+Left/Right word movement
+bindkey "^[[1;5D" backward-word  # Ctrl+Left
+bindkey "^[[1;5C" forward-word   # Ctrl+Right
+
+# Alternate keycodes for some terminals
+bindkey "^[OD" backward-word
+bindkey "^[OC" forward-word
+
 # Prompt
 ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
