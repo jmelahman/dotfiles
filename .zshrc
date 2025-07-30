@@ -25,6 +25,43 @@ setopt correct             # auto-correct commands
 setopt no_beep             # disable bell
 setopt prompt_subst        # allow command substitution in prompt
 
+# PS1
+autoload -Uz colors && colors
+
+# Fast dirty check via git porcelain
+parse_git_info() {
+  local branch dirty marks
+  command git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+  [[ -z $branch ]] && return
+
+  marks=""
+  dirty=$(git status --porcelain 2>/dev/null)
+
+  [[ $dirty == *"M "* ]] && marks+="!"
+  [[ $dirty == *"?? "* ]] && marks+="?"
+  [[ $dirty == *"A "* ]] && marks+="+"
+  [[ $dirty == *"D "* ]] && marks+="x"
+  [[ $(git rev-list --count --left-only @{u}...HEAD 2>/dev/null) -gt 0 ]] && marks+="*"
+
+  echo "[$branch${marks:+ $marks}]"
+}
+
+precmd() {
+  local exit_code=$?
+  local git_info host_info
+  git_info=$(parse_git_info)
+  host_info=""
+  [[ -n $SSH_CONNECTION ]] && host_info="(%{$fg[yellow]%}$(hostname)%{$reset_color%})"
+
+  local color=$fg[green]
+  (( exit_code != 0 )) && color=$fg[red]
+
+  PROMPT=$''"[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%} $host_info %D{%F %T}"
+  PROMPT+=$'\n'"${PROMPT_CHAR:-$([[ $EUID -eq 0 ]] && echo '#' || echo '$')} "
+}
+
 # Aliases
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias gs='git status'

@@ -4,8 +4,6 @@
 !/swap.sh
 !/.aider.conf.yml
 !/.arch.conf
-!/.bashrc
-!/.bash_profile
 !/.backgrounds/
 !/.bazelrc
 !/.config/beets/config.yaml
