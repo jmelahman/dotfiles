@@ -2,9 +2,6 @@
 autoload -Uz compinit
 compinit
 
-# Prompt
-PROMPT='%F{cyan}%n@%m%f:%F{yellow}%~%f %# '
-
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -25,7 +22,8 @@ setopt correct             # auto-correct commands
 setopt no_beep             # disable bell
 setopt prompt_subst        # allow command substitution in prompt
 
-# PS1
+# Prompt
+ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
 
 # Fast dirty check via git porcelain
@@ -58,8 +56,14 @@ precmd() {
   local color=$fg[green]
   (( exit_code != 0 )) && color=$fg[red]
 
-  PROMPT=$''"[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%} $host_info %D{%F %T}"
+  # Only prepend newline if this is not the first prompt
+  local newline=""
+  (( ZSH_FIRST_PROMPT == 0 )) && newline=$'\n'
+
+  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%} $host_info %D{%F %T}"
   PROMPT+=$'\n'"${PROMPT_CHAR:-$([[ $EUID -eq 0 ]] && echo '#' || echo '$')} "
+
+  ZSH_FIRST_PROMPT=0
 }
 
 # Aliases
