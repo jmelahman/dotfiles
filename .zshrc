@@ -32,6 +32,9 @@ bindkey "^[[1;5C" forward-word   # Ctrl+Right
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
 
+bindkey "\e[H" beginning-of-line # Home
+bindkey "\e[F" end-of-line       # End
+
 # Prompt
 ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
