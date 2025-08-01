@@ -64,7 +64,7 @@ precmd() {
   local git_info host_info
   git_info=$(parse_git_info)
   host_info=""
-  [[ -n $SSH_CONNECTION ]] && host_info="(%{$fg[yellow]%}$(hostname)%{$reset_color%})"
+  [[ -n $SSH_CONNECTION ]] && host_info=" (%{$fg[yellow]%}$(hostname)%{$reset_color%})"
 
   local color=$fg[green]
   (( exit_code != 0 )) && color=$fg[red]
@@ -73,7 +73,7 @@ precmd() {
   local newline=""
   (( ZSH_FIRST_PROMPT == 0 )) && newline=$'\n'
 
-  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%} $host_info %D{%F %T}"
+  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%}$host_info %D{%F %T}"
   PROMPT+=$'\n'"${PROMPT_CHAR:-$([[ $EUID -eq 0 ]] && echo '#' || echo '$')} "
 
   ZSH_FIRST_PROMPT=0
