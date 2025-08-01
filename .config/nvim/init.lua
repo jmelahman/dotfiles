@@ -178,7 +178,7 @@ require("lazy").setup({
           },
           openai = {
             endpoint = "https://openrouter.ai/api/v1",
-            model = "anthropic/claude-sonnet-4",
+            model = "moonshotai/kimi-k2",
             api_key_name = "OPENROUTER_API_KEY",
             max_tokens = 8000,
             extra_request_body = {
@@ -199,6 +199,22 @@ require("lazy").setup({
     {
       "cgrindel/vim-bazelrc",
       ft = "bazelrc",
+    },
+    {
+      "kawre/leetcode.nvim",
+      build = ":TSUpdate html",
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      opts = {
+        lang = "golang",
+        description = {
+          position = "top",
+        },
+      },
     },
   },
   -- automatically check for plugin updates
