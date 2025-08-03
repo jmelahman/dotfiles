@@ -216,6 +216,7 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     swaybar_command waybar
+    font pango:Font Awesome 7 Free Solid 10
 }
 
 #
