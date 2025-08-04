@@ -12,7 +12,7 @@ alias:
   # Local
   - "qwen3:ollama/qwen3:0.6b"
   - "coder:ollama/deepseek-coder:1.3b"
-model: "qwen3-free"
+model: "qwen3-coder"
 weak-model: "qwen3-free"
 subtree-only: true
 show-model-warnings: false
