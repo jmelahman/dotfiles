@@ -170,10 +170,10 @@ function gsp() {
 }
 
 # Kitty init
-KITTY_INSTALLATION_DIR="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}"
-if [[ -n "$KITTY_INSTALLATION_DIR/shell-integration" ]]; then
-    source "$KITTY_INSTALLATION_DIR/shell-integration/$(basename $SHELL)/kitty.zsh"
-else
+KITTY_SHELL_INTEGRATION="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}/shell-integration/$(basename $SHELL)/kitty.zsh"
+if [ -f "$KITTY_SHELL_INTEGRATION" ]; then
+    source "$KITTY_SHELL_INTEGRATION"
+elif [ -x "$(command -v kitty)" ]; then
     source <(kitty +kitten shell-integration)
 fi
 
