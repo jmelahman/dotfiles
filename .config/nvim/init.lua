@@ -163,6 +163,16 @@ require("lazy").setup({
   },
   -- automatically check for plugin updates
   checker = { enabled = true , notify = false },
+  performance = {
+    cache = {
+      enabled = true
+    },
+    reset_packpath = true,
+    rtp = {
+      reset = true,
+      paths = {}
+    }
+  }
 })
 
 require'nvim-treesitter.configs'.setup {
