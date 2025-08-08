@@ -80,6 +80,7 @@ require("lazy").setup({
     },
     {
       "hashivim/vim-terraform",
+      event = "BufRead *.tf,*.tfvars",
       config = function()
         -- Optional: Autoformat terraform files
         vim.g.terraform_fmt_on_save = 1
@@ -126,9 +127,11 @@ require("lazy").setup({
     {
       "cgrindel/vim-bazelrc",
       ft = "bazelrc",
+      event = "BufRead *.bazelrc",
     },
     {
       "kawre/leetcode.nvim",
+      event = "CmdlineEnter",
       build = ":TSUpdate html",
       dependencies = {
         "MunifTanjim/nui.nvim",
