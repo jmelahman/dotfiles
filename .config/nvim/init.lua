@@ -216,6 +216,20 @@ require("lazy").setup({
         },
       },
     },
+    {
+      "nvimtools/none-ls.nvim",
+      config = function()
+        local null_ls = require("null-ls")
+        null_ls.setup({
+          sources = {
+            null_ls.builtins.diagnostics.golangci_lint,
+          },
+        })
+      end,
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+      },
+    },
   },
   -- automatically check for plugin updates
   checker = { enabled = true , notify = false },
