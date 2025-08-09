@@ -35,6 +35,10 @@ bindkey "^[OC" forward-word
 bindkey "\e[H" beginning-of-line # Home
 bindkey "\e[F" end-of-line       # End
 
+# Make Alt+Backspace behave like bash
+bindkey '^[^?' backward-kill-word
+WORDCHARS=''
+
 # Prompt
 ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
