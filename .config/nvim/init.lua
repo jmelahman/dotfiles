@@ -1,6 +1,12 @@
 require("core.bootstrap")
 require("core.options")
 
+-- Must be before the lazyvim setup.
+vim.g.coq_settings = {
+  auto_start = "shut-up",
+  display = { icons = { mode = "none" }},
+}
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -178,11 +184,6 @@ require("lazy").setup({
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {"python", "typescript", "go"},
   highlight = { enable = true },
-}
-
-vim.g.coq_settings = {
-  auto_start = "shut-up",
-  display = { icons = { mode = "none" }},
 }
 
 vim.keymap.set('n', '<leader>gi', '<cmd>GoImports<CR>', { desc = "Run GoImports" })
