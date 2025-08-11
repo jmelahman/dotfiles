@@ -146,7 +146,7 @@ function rgplace() {
       file_pattern="*"
     fi
 
-    rg --files-with-matches "$search_pattern" --glob "$file_pattern" | while read -r file; do
+    rg --color=never --files-with-matches "$search_pattern" --glob "$file_pattern" | while read -r file; do
       sed -i "s|$search_pattern|$replacement|g" "$file"
     done
 }
