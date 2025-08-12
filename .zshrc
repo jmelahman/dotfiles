@@ -39,6 +39,9 @@ bindkey "\e[F" end-of-line       # End
 bindkey '^[^?' backward-kill-word
 WORDCHARS=''
 
+# Make Shift+Tab go backwards for autocomplete
+bindkey '^[[Z' reverse-menu-complete
+
 # Prompt
 ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
