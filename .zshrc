@@ -220,6 +220,7 @@ if [ -f /.dockerenv ]; then
 else
   export IN_DOCKER=false
 fi
+export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
 export OLLAMA_HOST=http://ollama.home
 export OLLAMA_API_BASE="$OLLAMA_HOST"
