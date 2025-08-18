@@ -30,6 +30,8 @@
 !/.mozilla/firefox/jamison.default/userChrome.css
 !/.ripgreprc
 !/.ruff.toml
+!/.ssh/config
+!/.ssh/config.d/00-generic.conf
 !/.themes/
 !/.vimrc
 !/.zshrc
