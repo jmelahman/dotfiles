@@ -86,7 +86,8 @@ require("lazy").setup({
     },
     {
       "hashivim/vim-terraform",
-      event = "BufRead *.tf,*.tfvars",
+      event = "BufRead *.tf,*.tfvars,*.tfstate",
+      lazy = false,
       config = function()
         -- Optional: Autoformat terraform files
         vim.g.terraform_fmt_on_save = 1
@@ -96,13 +97,13 @@ require("lazy").setup({
         vim.cmd([[
           autocmd BufRead,BufNewFile *.tf set filetype=terraform
           autocmd BufRead,BufNewFile *.tfstate set filetype=json
+          autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
         ]])
       end
     },
     {
       "yetone/avante.nvim",
       event = "VeryLazy",
-      lazy = false,
       opts = {
         providers = {
           ollama = {
