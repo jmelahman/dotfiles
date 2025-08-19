@@ -5,33 +5,33 @@ ERROR_LOG="$(mktemp)"
 FILES=()
 
 function notify_on_error {
-  if command -v notify-send > /dev/null; then
-    notify-send --app-name="dot-sync" \
-      "Failed to sync dotfiles." \
-      "$(tr '\n' ' ' < "$ERROR_LOG" | tr -s '[:space:]')"
-  else
-    >&2 cat "$ERROR_LOG"
-  fi
+	if command -v notify-send >/dev/null; then
+		notify-send --app-name="dot-sync" \
+			"Failed to sync dotfiles." \
+			"$(tr '\n' ' ' <"$ERROR_LOG" | tr -s '[:space:]')"
+	else
+		>&2 cat "$ERROR_LOG"
+	fi
 }
 
 trap 'notify_on_error' EXIT
 
-cd "$HOME" 2> "$ERROR_LOG"
+cd "$HOME" 2>"$ERROR_LOG"
 
-git pull -q origin master > /dev/null 2> "$ERROR_LOG"
-if command -v pacman > /dev/null; then
-  pacman -Qqe > .arch.conf 2> "$ERROR_LOG"
+git pull -q origin master >/dev/null 2>"$ERROR_LOG"
+if command -v pacman >/dev/null; then
+	pacman -Qqe >.arch.conf 2>"$ERROR_LOG"
 fi
 git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
-  FILES+=("$file")
+	FILES+=("$file")
 done
-if command -v ripsecrets > /dev/null; then
-  ripsecrets --strict-ignore "${FILES[@]}" > "$ERROR_LOG" 2>&1
+if command -v ripsecrets >/dev/null; then
+	ripsecrets --strict-ignore "${FILES[@]}" >"$ERROR_LOG" 2>&1
 fi
 
 if [ -n "$(git status --short)" ]; then
-  git commit --quiet -am "Auto-sync $(date)" 2> "$ERROR_LOG"
+	git commit --quiet -am "Auto-sync $(date)" 2>"$ERROR_LOG"
 fi
-git push -q origin master 2> "$ERROR_LOG"
+git push -q origin master 2>"$ERROR_LOG"
 
 trap - EXIT
