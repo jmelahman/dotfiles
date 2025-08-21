@@ -118,8 +118,8 @@ alias openhands="uvx --python=3.12 --from=openhands-ai openhands"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
-alias snip="slurp | grim -g - ~/Pictures/screenshot.png"
-alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g - ~/Pictures/screenshot.png"
+alias snip="slurp | grim -g -"
+alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g -"
 alias chat="ollama run jqwen3:30b"
 alias coder="ollama run devstral:latest"
 alias weak="ollama run jqwen3:0.6b"
@@ -212,6 +212,8 @@ export GOBIN="$GOPATH/bin"
 export PATH=$HOME/code/monorepo/tools/bin:$HOME/.local/bin:$GOBIN:$PATH
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+export GRIM_DEFAULT_DIR="~/Pictures"
 
 # https://wiki.archlinux.org/title/Docker#Rootless_Docker_daemon
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
