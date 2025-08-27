@@ -1,6 +1,5 @@
 {
   "registry-mirrors": [
-    "http://ava.lan:5000",
-    "https://registry.lahman.dev"
+    "http://registry.home"
   ]
 }
