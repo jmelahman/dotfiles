@@ -215,7 +215,10 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export GRIM_DEFAULT_DIR="~/Pictures"
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  SSH_AUTH_SOCK=$(systemctl --user show-environment | grep SSH_AUTH_SOCK | cut -d= -f2)
+  export SSH_AUTH_SOCK=${SSH_AUTH_SOCK:-$XDG_RUNTIME_DIR/ssh-agent.socket}
+fi
 
 # https://wiki.archlinux.org/title/Docker#Rootless_Docker_daemon
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
