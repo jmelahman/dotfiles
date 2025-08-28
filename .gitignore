@@ -13,6 +13,7 @@
 !/.config/mimeapps.list
 !/.config/nvim/
 /.config/nvim/lazy-lock.json
+!/.config/pacman/
 !/.config/pip/pip.conf
 !/.config/systemd/user/dot-sync.service
 !/.config/systemd/user/dot-sync.timer
