@@ -25,7 +25,6 @@
 !/.gitignore
 !/.githooks
 !/.local/bin/window-screenshot
-!/.local/share/applications/
 !/.mozilla/firefox/jamison.default/user.js
 !/.mozilla/firefox/jamison.default/userChrome.css
 !/.ripgreprc

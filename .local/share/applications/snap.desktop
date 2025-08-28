@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Screenshot (grim + slurp)
-Comment=Take a screenshot using grim and slurp
-Exec=sh -c 'grim ~/Pictures/screenshot-$(date +%F_%T).png -g "$(slurp)"'
-Icon=applets-screenshooter
-Terminal=false
-Type=Application
-Categories=Utility;Graphics;
