@@ -120,8 +120,8 @@ alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
 alias snip="slurp | grim -g -"
 alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g -"
-alias chat="ollama run jqwen3:30b"
-alias coder="ollama run devstral:latest"
+alias chat="ollama run mistral-small3.2:latest"
+alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
 alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 
