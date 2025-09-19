@@ -19,11 +19,10 @@ require("lazy").setup({
         { 'ms-jpq/coq.thirdparty', branch = "3p" }
       },
       config = function()
-        local lspconfig = require('lspconfig')
-        lspconfig.pyright.setup({
+        vim.lsp.config('pyright', {
           disableOrganizeImports = true,
         })
-        lspconfig.ruff.setup({
+        vim.lsp.config('ruff', {
           cmd = { "uvx", "ruff", "server" },
           on_attach = function(client)
             -- Enable fix all auto-fixable problems on save
@@ -44,7 +43,7 @@ require("lazy").setup({
             })
           end,
         })
-        lspconfig.ts_ls.setup({
+        vim.lsp.config('ts_ls', {
           on_attach = function(client)
             -- Enable format on save
             if client.server_capabilities.documentFormattingProvider then
@@ -56,7 +55,7 @@ require("lazy").setup({
             end
           end,
         })
-        lspconfig.gopls.setup({
+        vim.lsp.config('gopls', {
           on_attach = function(client)
             -- Enable format on save
             if client.server_capabilities.documentFormattingProvider then
@@ -68,6 +67,37 @@ require("lazy").setup({
             end
           end,
         })
+
+        vim.lsp.config('rust_analyzer', {
+          capabilities = vim.lsp.protocol.make_client_capabilities(),
+          on_attach = function(client)
+            -- Enable format on save
+            if client.server_capabilities.documentFormattingProvider then
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("RustFmt", { clear = true }),
+                pattern = '*.rs',
+                callback = function() vim.lsp.buf.format() end,
+              })
+            end
+          end,
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = {
+                allFeatures = true,
+              },
+              procMacro = {
+                enable = true,
+              },
+            },
+          },
+        })
+
+        -- Enable the configured LSP servers
+        vim.lsp.enable('pyright')
+        vim.lsp.enable('ruff')
+        vim.lsp.enable('ts_ls')
+        vim.lsp.enable('gopls')
+        vim.lsp.enable('rust_analyzer')
       end,
     },
     {
@@ -183,9 +213,13 @@ require("lazy").setup({
 })
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python", "typescript", "go"},
+  ensure_installed = {"python", "typescript", "go", "rust"},
   highlight = { enable = true },
 }
 
 vim.keymap.set('n', '<leader>gi', '<cmd>GoImports<CR>', { desc = "Run GoImports" })
 vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Actions" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
