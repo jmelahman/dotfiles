@@ -46,6 +46,9 @@ vim.cmd('hi SpellBad cterm=underline')
 -- Colorscheme configuration
 vim.cmd [[ colorscheme jvim ]]
 
+-- Syntax highlighting
+vim.cmd [[ au BufRead,BufNewFile PKGBUILD set filetype=sh ]]
+
 -- Key mappings
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
