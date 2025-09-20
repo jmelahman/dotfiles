@@ -32,7 +32,7 @@ vim.opt.textwidth = 99          -- Width of screen
 vim.opt.colorcolumn = '+1'      -- Vertical ruler
 vim.cmd('syntax on')            -- Enable syntax highlighting
 vim.opt.wrap = false            -- Disable line wrapping
-vim.opt.scrolloff = 3           -- Minimum lines around cursor displayed
+vim.opt.scrolloff = 5           -- Minimum lines around cursor displayed
 vim.opt.listchars = { tab = '▸ ', trail = '•' }  -- Configure Visualize whitespace
 vim.opt.list = true             -- Enable whitespace visualization
 
