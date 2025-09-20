@@ -36,7 +36,7 @@ hi('DiffText',     { bg = 'Red', bold = true,           ctermbg = 'Red', cterm =
 hi('ErrorMsg',     { fg = 'White', bg = 'Red',          ctermfg = 'White', ctermbg = 'DarkRed' })
 hi('IncSearch',    { reverse = true,                    cterm = { reverse = true } })
 hi('ModeMsg',      { bold = true,                       cterm = { bold = true } })
-hi('NonText',      { fg = 'Blue', bold = true,          ctermfg = 'Blue' })
+hi('NonText',      { fg = 'NvimDarkGray4', bold = true, ctermfg = 'DarkGray' })
 hi('PmenuSbar',    { bg = 'Grey',                       ctermbg = 'Grey' })
 hi('StatusLine',   { reverse = true, bold = true,       cterm = { reverse = true, bold = true }})
 hi('StatusLineNC', { reverse = true,                    cterm = { reverse = true } })

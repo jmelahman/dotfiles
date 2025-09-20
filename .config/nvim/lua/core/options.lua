@@ -36,6 +36,9 @@ vim.opt.scrolloff = 3           -- Minimum lines around cursor displayed
 vim.opt.listchars = { tab = '▸ ', trail = '•' }  -- Configure Visualize whitespace
 vim.opt.list = true             -- Enable whitespace visualization
 
+-- Menus
+vim.opt.pumheight = 4           -- Limit menus to 4 items
+
 -- Highlighting
 vim.cmd('hi clear SpellBad')
 vim.cmd('hi SpellBad cterm=underline')

@@ -4,7 +4,12 @@ require("core.options")
 -- Must be before the lazyvim setup.
 vim.g.coq_settings = {
   auto_start = "shut-up",
-  display = { icons = { mode = "none" }},
+  display = {
+    icons = { mode = "none" },
+    pum = {
+      y_max_len = 4,     -- cap height to 4; hack around coq's _update_pumheight()
+    },
+  },
 }
 
 -- Setup lazy.nvim
@@ -80,16 +85,6 @@ require("lazy").setup({
               })
             end
           end,
-          settings = {
-            ["rust-analyzer"] = {
-              cargo = {
-                allFeatures = true,
-              },
-              procMacro = {
-                enable = true,
-              },
-            },
-          },
         })
 
         -- Enable the configured LSP servers
