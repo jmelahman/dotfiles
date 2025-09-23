@@ -172,7 +172,7 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
       },
       opts = {
-        lang = "golang",
+        lang = "python",
         description = {
           position = "top",
         },
