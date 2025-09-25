@@ -42,6 +42,15 @@ WORDCHARS=''
 # Make Shift+Tab go backwards for autocomplete
 bindkey '^[[Z' reverse-menu-complete
 
+fzf_git_files() {
+  local file
+  file=$(git diff --name-only | fzf --multi) || return
+  LBUFFER+="$file "
+  zle reset-prompt
+}
+zle -N fzf_git_files
+bindkey '^D' fzf_git_files
+
 # Prompt
 ZSH_FIRST_PROMPT=1
 autoload -Uz colors && colors
