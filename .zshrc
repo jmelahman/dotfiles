@@ -133,6 +133,7 @@ alias chat="ollama run mistral-small3.2:latest"
 alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
 alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
+alias lights='smart-lights'
 
 # Functions
 function home() {
