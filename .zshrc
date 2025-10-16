@@ -175,8 +175,23 @@ function ga() {
 
 function gsp() {
   local subtree="${1:-}"
+  shift
+  __gsubtree push "$subtree" "$@"
+}
+
+function gspull() {
+  local subtree="${1}"
+  shift
+  __gsubtree pull "$subtree" --squash "$@"
+}
+
+function __gsubtree() {
+  local cmd="${1}"
+  shift
+  local subtree="${1:-}"
+  shift
   local toplevel
-  toplevel=$(git rev-parse --show-toplevel)
+  toplevel="$(git rev-parse --show-toplevel)"
   if [ -z "$subtree" ]; then
     >&2 echo "Missing argument 'subtree'."
     echo "Pick one of:"
@@ -184,7 +199,7 @@ function gsp() {
     git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq | xargs -I {} bash -c 'if [ -d $(git rev-parse --show-toplevel)/{} ] ; then echo "  {}"; fi'
     return 2
   fi
-  git -C "$toplevel" subtree push --prefix "$subtree" "git@github.com:jmelahman/$(basename "${subtree}").git" master
+  git -C "$toplevel" subtree "$cmd" --prefix "$subtree" "git@github.com:jmelahman/$(basename "${subtree}").git" master "$@"
 }
 
 # Kitty init
