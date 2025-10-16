@@ -18,6 +18,7 @@
 !/.config/systemd/user/dot-sync.service
 !/.config/systemd/user/dot-sync.timer
 !/.config/sway/
+!/.config/user-dirs.dirs
 !/.config/uv/uv.toml
 !/.config/waybar/
 !/.face
