@@ -10,6 +10,7 @@
     ],
     "modules-right": [
         "idle_inhibitor",
+        "custom/github",
         "cpu",
         "memory",
         "pulseaudio",
@@ -92,6 +93,14 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/github": {
+        "format" : " {text}",
+        "exec": "~/.config/waybar/github-notify.sh",
+        "interval": 60,
+        "return-type": "json",
+        "tooltip": false,
+        "on-click": "xdg-open https://github.com/notifications"
     },
     "custom/power": {
         "format" : "⏻ ",
