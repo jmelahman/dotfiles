@@ -72,3 +72,5 @@
 	repo = /home/jamison/code/monorepo
 	auto = false
 	strategy = incremental
+[advice]
+	skippedCherryPicks = false
