@@ -13,13 +13,13 @@
 [init]
 	defaultBranch = master
 [core]
-	hooksPath = /home/jamison/.githooks
+	hooksPath = ~/.githooks
 	pager = delta
 	fsmonitor = true
 [user]
 	email = jamison@lahman.dev
 	name = Jamison Lahman
-	signingkey = /home/jamison/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_rsa.pub
 [gpg]
 	format = ssh
 [commit]
@@ -68,8 +68,8 @@
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [maintenance]
-	repo = /home/jamison
-	repo = /home/jamison/code/monorepo
+	repo = ~/
+	repo = ~/code/monorepo
 	auto = false
 	strategy = incremental
 [advice]
