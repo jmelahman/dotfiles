@@ -11,6 +11,6 @@ unset GIT_DIR
 ARGS=(hook-impl --hook-type=pre-commit --script-version=3)
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
-ARGS+=(--hook-dir "$HERE" -- --allow-missing-config "$@")
+ARGS+=(--hook-dir "$HERE" -- "$@")
 
-prek "${ARGS[@]}"
+pPREK_ALLOW_NO_CONFIG=1 prek "${ARGS[@]}"
