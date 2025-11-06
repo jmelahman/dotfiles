@@ -75,10 +75,24 @@ parse_git_info() {
   echo "[$branch${marks:+ $marks}]"
 }
 
+# Get current terraform workspace
+parse_terraform_workspace() {
+  local workspace
+  # Ignore directories that are not initialized with terraform.
+  [[ -d ".terraform" ]] || return
+
+  # Get the current workspace (suppress errors if terraform is not available or not in terraform dir)
+  workspace=$(terraform workspace show 2>/dev/null)
+  [[ -z $workspace ]] && return
+
+  echo " (tf:$workspace)"
+}
+
 precmd() {
   local exit_code=$?
-  local git_info host_info
+  local git_info host_info terraform_info
   git_info=$(parse_git_info)
+  terraform_info=$(parse_terraform_workspace)
   host_info=""
   [[ -n $SSH_CONNECTION ]] && host_info=" (%{$fg[yellow]%}$(hostname)%{$reset_color%})"
 
@@ -89,7 +103,7 @@ precmd() {
   local newline=""
   (( ZSH_FIRST_PROMPT == 0 )) && newline=$'\n'
 
-  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%}$host_info %D{%F %T}"
+  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%}%{$fg[cyan]%}$terraform_info%{$reset_color%}$host_info %D{%F %T}"
   PROMPT+=$'\n'"${PROMPT_CHAR:-$([[ $EUID -eq 0 ]] && echo '#' || echo '$')} "
 
   ZSH_FIRST_PROMPT=0
@@ -222,6 +236,10 @@ if [ -f "$HOME/.env" ]; then
     export "$line"
   done < "$HOME/.env"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Vim as default
 export EDITOR="vim"
