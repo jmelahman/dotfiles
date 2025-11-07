@@ -148,6 +148,7 @@ alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
 alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 alias lights='smart-lights'
+alias awslogin="aws sso login"
 
 # Functions
 function home() {
@@ -271,6 +272,8 @@ else
   export IN_DOCKER=false
 fi
 export BUILDX_BAKE_ENTITLEMENTS_FS=0
+
+export AWS_PROFILE="jamison"
 
 export OLLAMA_HOST=http://ollama.home
 export OLLAMA_API_BASE="$OLLAMA_HOST"

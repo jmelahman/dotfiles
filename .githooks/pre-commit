@@ -8,9 +8,16 @@
 # https://www.spinics.net/lists/git/msg374197.html
 unset GIT_DIR
 
-ARGS=(hook-impl --hook-type=pre-commit --script-version=3)
+ARGS=(hook-impl --hook-type=pre-commit --skip-on-missing-config --script-version=3)
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ARGS+=(--hook-dir "$HERE" -- "$@")
+PREK="/opt/homebrew/bin/prek"
 
-pPREK_ALLOW_NO_CONFIG=1 prek "${ARGS[@]}"
+# Check if the full path to prek is executable, otherwise fallback to PATH
+if [ ! -x "$PREK" ]; then
+    PREK="prek"
+fi
+
+exec "$PREK" "${ARGS[@]}"
+
