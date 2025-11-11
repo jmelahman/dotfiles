@@ -148,6 +148,7 @@ alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
 alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 alias lights='smart-lights'
+alias aws="uvx --from=awscliv2 awsv2"
 alias awslogin="aws sso login"
 
 # Functions
