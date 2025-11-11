@@ -52,7 +52,7 @@ exec swayidle -w timeout 300 'swaylock -f -c 000000'
 #
 # Example configuration:
 #
-input "2362:597:SYNA3602:00_093A:0255_Touchpad" {
+input "type:touchpad" {
     tap enabled
 }
 #
