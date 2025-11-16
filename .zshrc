@@ -275,8 +275,8 @@ export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
 export AWS_PROFILE="jamison"
 
-export OLLAMA_HOST=http://ollama.home
-export OLLAMA_API_BASE="$OLLAMA_HOST"
+#export OLLAMA_HOST=http://ollama.home
+#export OLLAMA_API_BASE="$OLLAMA_HOST"
 
 # For torch with AMD GPU
 export HSA_OVERRIDE_GFX_VERSION=11.0.0
