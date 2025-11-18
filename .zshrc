@@ -152,11 +152,11 @@ alias awslogin="aws sso login"
 
 # Functions
 function home() {
-  export home="$PWD"
+  export TEMP_HOME="$PWD"
 }
 
 function cd() {
-  HOME="${home:=$HOME}" builtin cd "$@"
+  HOME="${TEMP_HOME:=$HOME}" builtin cd "$@"
 }
 
 function rgplace() {
