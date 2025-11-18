@@ -33,7 +33,15 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%H:%M:%S}",
-        "interval": 1
+        "format-alt": "{:%H:%M:%S UTC}",
+        "interval": 1,
+        "timezones": [
+            "",
+            "UTC"
+        ],
+        "actions": {
+            "on-click": "tz_up"
+        }
     },
     "cpu": {
         "format": "{usage}% ",
