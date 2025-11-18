@@ -7,6 +7,7 @@
 !/.backgrounds/
 !/.bazelrc
 !/.config/beets/config.yaml
+!/.config/Cursor/User/settings.json
 !/.config/docker/daemon.json
 !/.config/htop/htoprc
 !/.config/kitty/
