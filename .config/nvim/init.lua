@@ -24,6 +24,8 @@ require("lazy").setup({
         { 'ms-jpq/coq.thirdparty', branch = "3p" }
       },
       config = function()
+        local coq = require("coq")
+
         vim.lsp.config('pyright', {
           disableOrganizeImports = true,
         })
@@ -53,7 +55,7 @@ require("lazy").setup({
             -- Enable format on save
             if client.server_capabilities.documentFormattingProvider then
               vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                group = vim.api.nvim_create_augroup("TsFormat", { clear = true }),
                 pattern = "*.js,*.jsx,*.ts,*.tsx",
                 callback = function() vim.lsp.buf.format({ async = false }) end,
               })
@@ -65,7 +67,7 @@ require("lazy").setup({
             -- Enable format on save
             if client.server_capabilities.documentFormattingProvider then
               vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("Format", { clear = true }),
+                group = vim.api.nvim_create_augroup("GoFormat", { clear = true }),
                 pattern = '*.go',
                 callback = function() vim.lsp.buf.format() end
               })
@@ -87,12 +89,29 @@ require("lazy").setup({
           end,
         })
 
-        -- Enable the configured LSP servers
+        vim.lsp.config('yamlls', {
+          settings = {
+            yaml = {
+              schemas = {
+                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                ["https://json.schemastore.org/prettierrc.json"] = "/.prettierrc.{yml,yaml}",
+                kubernetes = "/*.yaml",
+              },
+              format = {
+                enable = true,
+              },
+              validate = true,
+            },
+          },
+        })
+
+        -- Enable the configured LSP servers with COQ capabilities
         vim.lsp.enable('pyright')
         vim.lsp.enable('ruff')
         vim.lsp.enable('ts_ls')
         vim.lsp.enable('gopls')
         vim.lsp.enable('rust_analyzer')
+        vim.lsp.enable('yamlls')
       end,
     },
     {
@@ -207,10 +226,28 @@ require("lazy").setup({
   }
 })
 
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"python", "typescript", "go", "rust"},
-  highlight = { enable = true },
-}
+local status_ok, treesitter_configs = pcall(require, 'nvim-treesitter.configs')
+if status_ok then
+  treesitter_configs.setup {
+    ensure_installed = {"python", "typescript", "go", "rust", "yaml"},
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
+    },
+  }
+end
 
 vim.keymap.set('n', '<leader>gi', '<cmd>GoImports<CR>', { desc = "Run GoImports" })
 vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Actions" })
