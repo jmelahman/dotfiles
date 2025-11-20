@@ -1,5 +1,8 @@
 {
     "window.commandCenter": true,
     "workbench.colorTheme": "Cursor Dark High Contrast",
-    "editor.fontFamily": "JetBrains Mono"
+    "editor.fontFamily": "JetBrains Mono",
+    "vim.handleKeys": {
+        "<C-p>": false
+    }
 }
