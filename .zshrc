@@ -149,6 +149,7 @@ alias weak="ollama run jqwen3:0.6b"
 alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 alias lights='smart-lights'
 alias awslogin="aws sso login"
+alias venv="uv venv .venv --python 3.11 --allow-existing && source .venv/bin/activate"
 
 # Functions
 function home() {
