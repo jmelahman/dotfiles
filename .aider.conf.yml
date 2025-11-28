@@ -12,8 +12,9 @@ alias:
   # Local
   - "qwen3:ollama/qwen3:0.6b"
   - "coder:ollama/deepseek-coder:1.3b"
-model: "qwen3-coder"
-weak-model: "devstral"
+  - "orchestrator:ollama/hf.co/jmelahman/Orchestrator-8B-Q4_K_M-GGUF:latest"
+model: "orchestrator"
+weak-model: "orchestrator"
 subtree-only: true
 show-model-warnings: false
 dark-mode: true
