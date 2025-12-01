@@ -65,6 +65,8 @@
 	tool = kitty
 [difftool "kitty"]
 	cmd = kitty +kitten diff \"$LOCAL\" \"$REMOTE\"
+[difftool "sqlite3"]
+	cmd = sqldiff \"$LOCAL\" \"$REMOTE\"
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [maintenance]

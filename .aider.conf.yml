@@ -10,11 +10,12 @@ alias:
   - "chat:openrouter/deepseek/deepseek-r1-0528-qwen3-8b:free"
   - "r1:openrouter/deepseek/deepseek-chat-v3-0324:free"
   # Local
-  - "qwen3:ollama/qwen3:0.6b"
+  - "qwen-coder:ollama/qwen3-coder:latest"
+  - "qwen3:ollama/qwen3:latest"
   - "coder:ollama/deepseek-coder:1.3b"
   - "orchestrator:ollama/hf.co/jmelahman/Orchestrator-8B-Q4_K_M-GGUF:latest"
-model: "orchestrator"
-weak-model: "orchestrator"
+model: "qwen-coder"
+weak-model: "qwen3"
 subtree-only: true
 show-model-warnings: false
 dark-mode: true
