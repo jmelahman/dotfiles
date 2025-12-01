@@ -30,7 +30,7 @@ require("lazy").setup({
           disableOrganizeImports = true,
         })
         vim.lsp.config('ruff', {
-          cmd = { "uvx", "ruff", "server" },
+          cmd = { "uv", "tool", "run", "ruff", "server" },
           on_attach = function(client)
             -- Enable fix all auto-fixable problems on save
             vim.api.nvim_create_autocmd("BufWritePre", {
