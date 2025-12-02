@@ -218,6 +218,47 @@ function __gsubtree() {
   git -C "$toplevel" subtree "$cmd" --prefix "$subtree" "git@github.com:jmelahman/$(basename "${subtree}").git" master "$@"
 }
 
+grb() {
+  local input="$1"
+  local remote="${input%%:*}"
+  local branch="${input#*:}"
+
+  if [[ -z "$remote" || -z "$branch" ]]; then
+    echo "Usage: gcrb user:branch"
+    return 1
+  fi
+
+  # infer repo URL from origin
+  local origin url repo_base new_remote_url
+
+  url=$(git remote get-url origin 2>/dev/null) || {
+    echo "Not a git repo or origin missing."
+    return 1
+  }
+
+  if [[ "$url" =~ github.com[:/](.*)/(.*)(\.git)?$ ]]; then
+    repo_base="${match[1]}"
+    repo_name="${match[2]}"
+  else
+    echo "Could not parse GitHub URL from origin: $url"
+    return 1
+  fi
+
+  new_remote_url="git@github.com:${remote}/${repo_name}.git"
+
+  # add remote if needed
+  if ! git remote get-url "$remote" >/dev/null 2>&1; then
+    echo "Adding remote $remote → $new_remote_url"
+    git remote add "$remote" "$new_remote_url"
+  fi
+
+  echo "Fetching $remote..."
+  git fetch "$remote" "$branch"
+
+  echo "Checking out $branch from $remote..."
+  git checkout -B "$branch" "$remote/$branch"
+}
+
 # Kitty init
 KITTY_SHELL_INTEGRATION="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}/shell-integration/$(basename $SHELL)/kitty.zsh"
 if [ -f "$KITTY_SHELL_INTEGRATION" ]; then
