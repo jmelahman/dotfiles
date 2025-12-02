@@ -14,6 +14,7 @@
 !/.config/ghostty/config
 !/.config/mimeapps.list
 !/.config/nvim/
+!/.config/nvim/init.lua
 /.config/nvim/lazy-lock.json
 !/.config/pacman/
 !/.config/pip/pip.conf
