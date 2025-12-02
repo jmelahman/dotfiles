@@ -26,9 +26,8 @@ require("lazy").setup({
       config = function()
         local coq = require("coq")
 
-        vim.lsp.config('pyright', {
-          disableOrganizeImports = true,
-        })
+        vim.lsp.config('pyright', {})
+
         vim.lsp.config('ruff', {
           cmd = { "uv", "tool", "run", "ruff", "server" },
           on_attach = function(client)
@@ -255,3 +254,13 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = tru
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
+
+-- Show diagnostics automatically when cursor holds
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+  end,
+})
+
+-- Set how long to wait before showing diagnostics (in milliseconds)
+vim.opt.updatetime = 300
