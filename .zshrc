@@ -1,6 +1,7 @@
 # Enable completion
-autoload -Uz compinit
+autoload -Uz compinit add-zsh-hook
 compinit
+add-zsh-hook chpwd auto_activate_venv
 
 # History
 HISTFILE=~/.zsh_history
@@ -86,6 +87,22 @@ parse_terraform_workspace() {
   [[ -z $workspace ]] && return
 
   echo " (tf:$workspace)"
+}
+
+# Automatically activate a Python virtual environment if one exists
+auto_activate_venv() {
+    # Look for a virtual environment folder in the current directory
+    if [[ -f ".venv/bin/activate" ]]; then
+        # Only activate if not already active
+        if [[ -z "$VIRTUAL_ENV" || "$VIRTUAL_ENV" != "$PWD/.venv" ]]; then
+            source .venv/bin/activate
+        fi
+    else
+        # Deactivate if leaving a directory with a venv
+        if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" == "$OLDPWD/.venv" ]]; then
+            deactivate
+        fi
+    fi
 }
 
 precmd() {
