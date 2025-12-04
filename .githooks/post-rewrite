@@ -8,7 +8,7 @@
 # https://www.spinics.net/lists/git/msg374197.html
 unset GIT_DIR
 
-ARGS=(hook-impl --hook-type=post-checkout --skip-on-missing-config --script-version=3)
+ARGS=(hook-impl --hook-type=post-rewrite --skip-on-missing-config --script-version=3)
 
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ARGS+=(--hook-dir "$HERE" -- "$@")
