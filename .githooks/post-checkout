@@ -19,5 +19,6 @@ if [ ! -x "$PREK" ]; then
     PREK="prek"
 fi
 
-exec "$PREK" "${ARGS[@]}"
+# Show only the first line to reduce spam while indicating hooks are running.
+exec "$PREK" "${ARGS[@]}" | head -n 1
 
