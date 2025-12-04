@@ -96,6 +96,8 @@ auto_activate_venv() {
         # Only activate if not already active
         if [[ -z "$VIRTUAL_ENV" || "$VIRTUAL_ENV" != "$PWD/.venv" ]]; then
             source .venv/bin/activate
+            # Refresh autocomplete to pick up any new binaries.
+            compinit
         fi
     else
         # Deactivate if leaving a directory with a venv
