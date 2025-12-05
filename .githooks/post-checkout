@@ -10,6 +10,11 @@ unset GIT_DIR
 
 ARGS=(hook-impl --hook-type=post-checkout --color=always --skip-on-missing-config --script-version=3)
 
+# Detect quiet mode and forward to prek
+if [ -n "$GIT_QUIET" ]; then
+    ARGS+=(--quiet)
+fi
+
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ARGS+=(--hook-dir "$HERE" -- "$@")
 PREK="/usr/bin/prek"
