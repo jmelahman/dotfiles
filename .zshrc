@@ -312,6 +312,8 @@ export LS_OPTIONS="--color=auto"
 export CLICOLOR="Yes"
 export LSCOLOR=""
 
+ export GIT_QUIET=true
+
 # Customize Path
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
