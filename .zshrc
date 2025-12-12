@@ -293,6 +293,12 @@ then
     source /usr/share/fzf/key-bindings.zsh
 fi
 
+# Node Version Manager init
+if [ -r /usr/share/nvm/init-nvm.sh ]
+then
+    source /usr/share/nvm/init-nvm.sh
+fi
+
 # Load env
 if [ -f "$HOME/.env" ]; then
   while read -r line; do
