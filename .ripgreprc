@@ -1,4 +1,0 @@
-# Ignore the ~/.gitignore which is used to track dotfiles.
-# This also ignores "$(git rev-parse --show-toplevel)/.gitignore" which is usually not desired.
-# To workaround, that ignore can be symlinked to .rgignore.
---no-ignore-vcs
