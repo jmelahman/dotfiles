@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -exo pipefail
 
 ERROR_LOG="$(mktemp)"
-FILES=()
+GIT=(
+  "/usr/bin/git"
+  "--git-dir=$HOME/.dotfiles/.git"
+  "--work-tree=$HOME"
+)
 
 function notify_on_error {
 	if command -v notify-send >/dev/null; then
@@ -18,20 +22,17 @@ trap 'notify_on_error' EXIT
 
 cd "$HOME" 2>"$ERROR_LOG"
 
-git pull -q origin master >/dev/null 2>"$ERROR_LOG"
+"${GIT[@]}" pull -q origin master >/dev/null 2>"$ERROR_LOG"
 if command -v pacman >/dev/null; then
 	pacman -Qqe >.arch.conf 2>"$ERROR_LOG"
 fi
-git diff --cached --name-only --diff-filter=ACM | while IFS= read -r file; do
-	FILES+=("$file")
-done
 if command -v ripsecrets >/dev/null; then
-	ripsecrets --strict-ignore "${FILES[@]}" >"$ERROR_LOG" 2>&1
+  ripsecrets --strict-ignore $("${GIT[@]}" diff --name-only --diff-filter=ACM) >"$ERROR_LOG" 2>&1
 fi
 
-if [ -n "$(git status --short)" ]; then
-	git commit --quiet -am "Auto-sync $(date)" 2>"$ERROR_LOG"
+if [ -n "$("${GIT[@]}" status --short)" ]; then
+ "${GIT[@]}" commit --quiet -am "Auto-sync $(date)" 2>"$ERROR_LOG" --no-verify
 fi
-git push -q origin master 2>"$ERROR_LOG"
+"${GIT[@]}" push -q origin master 2>"$ERROR_LOG"
 
 trap - EXIT
