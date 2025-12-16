@@ -33,6 +33,6 @@ fi
 if [ -n "$("${GIT[@]}" status --short)" ]; then
  "${GIT[@]}" commit --quiet -am "Auto-sync $(date)" 2>"$ERROR_LOG" --no-verify
 fi
-"${GIT[@]}" push -q origin master 2>"$ERROR_LOG"
+"${GIT[@]}" push -q origin master 2>"$ERROR_LOG" --no-verify
 
 trap - EXIT
