@@ -27,7 +27,7 @@ if command -v pacman >/dev/null; then
 	pacman -Qqe >.arch.conf 2>"$ERROR_LOG"
 fi
 if command -v ripsecrets >/dev/null; then
-  ripsecrets $("${GIT[@]}" diff --name-only --diff-filter=ACM) >"$ERROR_LOG" 2>&1
+  ripsecrets --strict-ignore $("${GIT[@]}" diff --name-only --diff-filter=ACM) >"$ERROR_LOG" 2>&1
 fi
 
 if [ -n "$("${GIT[@]}" status --short)" ]; then
