@@ -3,17 +3,21 @@
 ## Initialize
 
 ```shell
-cd $HOME
-git init
-git remote add origin git@github.com:jmelahman/dotfiles.git
-git fetch origin master
-git reset origin/master
+git clone git@github.com:jmelahman/dotfiles.git "$HOME/.dotfiles"
 ```
+
+And configure `status.showUntrackedFiles`,
+
+```shell
+dotfiles config --local status.showUntrackedFiles no
+```
+
+_`dotfiles` is an alias for `/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"`._
 
 If you have `GIT_LFS_SKIP_SMUDGE=1` enabled, you may need,
 
 ```shell
-git restore .
+dotfiles lfs pull origin master
 ```
 
 to restore the `deleted` files.
@@ -25,9 +29,3 @@ to restore the `deleted` files.
 ```shell
 systemctl enable --now --user dot-sync.timer
 ```
-
-## Tracking New Files
-
-For privacy, tracking files in the repo are opt-in.
-
-To opt-in, update `.gitignore` with an exception for that file.

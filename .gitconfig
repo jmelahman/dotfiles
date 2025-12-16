@@ -69,8 +69,10 @@
 	cmd = sqldiff \"$LOCAL\" \"$REMOTE\"
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[includeIf "gitdir:~/.dotfiles/"]
+    path = ~/.dotfiles/.gitconfig
 [maintenance]
-	repo = ~/
+	repo = ~/.dotfiles
 	repo = ~/code/monorepo
 	auto = false
 	strategy = incremental

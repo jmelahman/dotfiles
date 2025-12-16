@@ -170,6 +170,7 @@ alias lights='smart-lights'
 alias awslogin="aws sso login"
 alias venv="uv venv .venv --python 3.11 --allow-existing && source .venv/bin/activate"
 alias activate="source .venv/bin/activate"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 
 # Functions
 function home() {
@@ -344,7 +345,7 @@ fi
 export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
 export AWS_PROFILE="jamison"
-export HOST_PORT_80="8000"
+export HOST_PORT_80="3001"
 
 #export OLLAMA_HOST=http://ollama.home
 #export OLLAMA_API_BASE="$OLLAMA_HOST"
