@@ -32,21 +32,21 @@ require("lazy").setup({
           cmd = { "uv", "tool", "run", "ruff", "server" },
           on_attach = function(client)
             -- Enable fix all auto-fixable problems on save
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = vim.api.nvim_create_augroup("RuffFixAll", { clear = true }),
-              pattern = "*.py",
-              callback = function()
-                -- Apply all auto-fixable code actions
-                vim.lsp.buf.code_action({
-                  context = { only = { "source.fixAll.ruff" } },
-                  apply = true,
-                })
-                -- Also format the document
-                if client.server_capabilities.documentFormattingProvider then
-                  vim.lsp.buf.format({ async = false })
-                end
-              end,
-            })
+            -- vim.api.nvim_create_autocmd("BufWritePre", {
+            --   group = vim.api.nvim_create_augroup("RuffFixAll", { clear = true }),
+            --   pattern = "*.py",
+            --   callback = function()
+            --     -- Apply all auto-fixable code actions
+            --     vim.lsp.buf.code_action({
+            --       context = { only = { "source.fixAll.ruff" } },
+            --       apply = true,
+            --     })
+            --     -- Also format the document
+            --     if client.server_capabilities.documentFormattingProvider then
+            --       vim.lsp.buf.format({ async = false })
+            --     end
+            --   end,
+            -- })
           end,
         })
         vim.lsp.config('ts_ls', {
