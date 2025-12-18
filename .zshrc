@@ -343,7 +343,7 @@ fi
 export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
 export AWS_PROFILE="jamison"
-export HOST_PORT_80="3001"
+export HOST_PORT_80="8888"
 
 #export OLLAMA_HOST=http://ollama.home
 #export OLLAMA_API_BASE="$OLLAMA_HOST"
