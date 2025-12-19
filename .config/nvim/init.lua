@@ -49,18 +49,6 @@ require("lazy").setup({
             -- })
           end,
         })
-        vim.lsp.config('ts_ls', {
-          on_attach = function(client)
-            -- Enable format on save
-            if client.server_capabilities.documentFormattingProvider then
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("TsFormat", { clear = true }),
-                pattern = "*.js,*.jsx,*.ts,*.tsx",
-                callback = function() vim.lsp.buf.format({ async = false }) end,
-              })
-            end
-          end,
-        })
         vim.lsp.config('gopls', {
           on_attach = function(client)
             -- Enable format on save
@@ -107,7 +95,6 @@ require("lazy").setup({
         -- Enable the configured LSP servers with COQ capabilities
         vim.lsp.enable('pyright')
         vim.lsp.enable('ruff')
-        vim.lsp.enable('ts_ls')
         vim.lsp.enable('gopls')
         vim.lsp.enable('rust_analyzer')
         vim.lsp.enable('yamlls')
@@ -203,7 +190,23 @@ require("lazy").setup({
         null_ls.setup({
           sources = {
             null_ls.builtins.diagnostics.golangci_lint,
+            null_ls.builtins.formatting.prettier.with({
+              filetypes = {
+                "javascript", "javascriptreact", "typescript", "typescriptreact",
+                "json", "yaml", "html", "css", "scss", "markdown",
+              },
+            }),
           },
+          on_attach = function(client, bufnr)
+            if client.supports_method("textDocument/formatting") then
+              vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                  vim.lsp.buf.format({ bufnr = bufnr, async = false })
+                end,
+              })
+            end
+          end,
         })
       end,
       dependencies = {
