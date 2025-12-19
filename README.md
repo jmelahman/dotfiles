@@ -3,24 +3,11 @@
 ## Initialize
 
 ```shell
-git clone git@github.com:jmelahman/dotfiles.git "$HOME/.dotfiles"
-```
-
-And configure `status.showUntrackedFiles`,
-
-```shell
+git clone --bare git@github.com:jmelahman/dotfiles.git $HOME/.dotfiles
+alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dotfiles config --local status.showUntrackedFiles no
+GIT_LFS_SKIP_SMUDGE=0 dotfiles checkout --force
 ```
-
-_`dotfiles` is an alias for `/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"`._
-
-If you have `GIT_LFS_SKIP_SMUDGE=1` enabled, you may need,
-
-```shell
-dotfiles lfs pull origin master
-```
-
-to restore the `deleted` files.
 
 ## Installing `dot-sync`
 
