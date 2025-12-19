@@ -49,6 +49,7 @@ require("lazy").setup({
             -- })
           end,
         })
+        vim.lsp.config('ts_ls', {})
         vim.lsp.config('gopls', {
           on_attach = function(client)
             -- Enable format on save
@@ -95,6 +96,7 @@ require("lazy").setup({
         -- Enable the configured LSP servers with COQ capabilities
         vim.lsp.enable('pyright')
         vim.lsp.enable('ruff')
+        vim.lsp.enable('ts_ls')
         vim.lsp.enable('gopls')
         vim.lsp.enable('rust_analyzer')
         vim.lsp.enable('yamlls')
