@@ -170,7 +170,7 @@ alias lights='smart-lights'
 alias awslogin="aws sso login"
 alias venv="uv venv .venv --python 3.11 --allow-existing && source .venv/bin/activate"
 alias activate="source .venv/bin/activate"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # Functions
 function home() {
