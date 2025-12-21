@@ -170,7 +170,7 @@ alias lights='smart-lights'
 alias awslogin="aws sso login"
 alias venv="uv venv .venv --python 3.11 --allow-existing && source .venv/bin/activate"
 alias activate="source .venv/bin/activate"
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # Functions
 function home() {
@@ -245,7 +245,7 @@ grb() {
   local branch="${input#*:}"
 
   if [[ -z "$remote" || -z "$branch" ]]; then
-    echo "Usage: gcrb user:branch"
+    echo "Usage: grb user:branch"
     return 1
   fi
 
@@ -265,7 +265,7 @@ grb() {
     return 1
   fi
 
-  new_remote_url="git@github.com:${remote}/${repo_name}.git"
+  new_remote_url="git@github.com:${remote}/${repo_name}"
 
   # add remote if needed
   if ! git remote get-url "$remote" >/dev/null 2>&1; then
