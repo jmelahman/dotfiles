@@ -47,8 +47,6 @@
 	required = true
 [interactive]
 	diffFilter = delta --color-only
-[merge]
-	conflictStyle = zdiff3
 [delta]
 	side-by-side = true
 	syntax-theme = Coldark-Dark
