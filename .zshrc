@@ -107,11 +107,20 @@ auto_activate_venv() {
     fi
 }
 
+kube_context_info() {
+  local ctx short
+  ctx="$(kubectl config current-context 2>/dev/null)"
+  [[ -z "$ctx" ]] && return
+  short="${ctx##*/}"
+  echo "⎈ $short"
+}
+
 precmd() {
   local exit_code=$?
   local git_info host_info terraform_info
   git_info=$(parse_git_info)
   terraform_info=$(parse_terraform_workspace)
+  kube_info=$(kube_context_info)
   host_info=""
   [[ -n $SSH_CONNECTION ]] && host_info=" (%{$fg[yellow]%}$(hostname)%{$reset_color%})"
 
@@ -122,7 +131,7 @@ precmd() {
   local newline=""
   (( ZSH_FIRST_PROMPT == 0 )) && newline=$'\n'
 
-  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[green]%}$git_info%{$reset_color%}%{$fg[cyan]%}$terraform_info%{$reset_color%}$host_info %D{%F %T}"
+  PROMPT="${newline}[%{$color%}$exit_code%{$reset_color%}] %{$fg[blue]%}%~%{$reset_color%} %{$fg[yellow]%}$kube_info%{$reset_color%}%{$fg[green]%}$git_info%{$reset_color%}%{$fg[cyan]%}$terraform_info%{$reset_color%}$host_info %D{%F %T}"
   PROMPT+=$'\n'"${PROMPT_CHAR:-$([[ $EUID -eq 0 ]] && echo '#' || echo '$')} "
 
   ZSH_FIRST_PROMPT=0
