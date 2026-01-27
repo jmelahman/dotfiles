@@ -89,6 +89,10 @@ parse_terraform_workspace() {
   echo " (tf:$workspace)"
 }
 
+activate_default_venv() {
+  source ~/code/onyx/.venv/bin/activate
+}
+
 # Automatically activate a Python virtual environment if one exists
 auto_activate_venv() {
     # Look for a virtual environment folder in the current directory
@@ -103,9 +107,11 @@ auto_activate_venv() {
         # Deactivate if leaving a directory with a venv
         if [[ -n "$VIRTUAL_ENV" && "$VIRTUAL_ENV" == "$OLDPWD/.venv" ]]; then
             deactivate
+            activate_default_venv
         fi
     fi
 }
+activate_default_venv
 
 kube_context_info() {
   local ctx short
