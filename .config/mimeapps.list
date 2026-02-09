@@ -6,7 +6,9 @@ x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
 image/jpeg=firefox.desktop
 video/mp4=firefox.desktop
+image/png=firefox.desktop
 
 [Added Associations]
 image/jpeg=firefox.desktop;
 video/mp4=firefox.desktop;
+image/png=firefox.desktop;
