@@ -167,7 +167,7 @@ alias hostname="cat /etc/hostname"
 alias update="sudo nixos-rebuild switch"
 alias vim="nvim"
 alias kitty="kitty --session ~/.config/kitty/startup-session.conf"
-alias zwift="DONT_CHECK=true CONTAINER_TOOL='sudo docker' zwift"
+alias zwift="CONTAINER_TOOL='podman' zwift"
 # TODO: Remove python3.12 once https://github.com/Aider-AI/aider/issues/3660 is resolved.
 alias aider="uvx --python=3.12 --from=aider-chat aider"
 alias ruff="uvx ruff"
