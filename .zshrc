@@ -176,7 +176,7 @@ alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{prin
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
 alias snip="slurp | grim -g -"
-alias snap="sleep 3 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g -"
+alias snap="sleep 2 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .rect | \"\(.x),\(.y) \(.width)x\(.height)\"' | grim -g -"
 alias chat="ollama run mistral-small3.2:latest"
 alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
@@ -349,7 +349,8 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # https://wiki.archlinux.org/title/Docker#Rootless_Docker_daemon
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock"
+export DOCKER_SOCK_PATH="$XDG_RUNTIME_DIR/docker.sock"
 if [ -f /.dockerenv ]; then
   export IN_DOCKER=true
 else

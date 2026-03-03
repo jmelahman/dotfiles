@@ -20,6 +20,8 @@
 	email = jamison@lahman.dev
 	name = Jamison Lahman
 	signingkey = ~/.ssh/id_rsa.pub
+[alias]
+   mylog = log --author="jamison@lahman.dev" --oneline --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [gpg]
 	format = ssh
 [commit]
