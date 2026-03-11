@@ -360,6 +360,7 @@ export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
 # TODO: npm install changes the lockfile on Linux, https://github.com/onyx-dot-app/onyx/issues/7381
 export SKIP=npm-install-check
+export IMAGE_TAG=edge
 
 export AWS_PROFILE="jamison"
 export HOST_PORT_80="8888"
