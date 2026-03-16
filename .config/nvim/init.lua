@@ -49,7 +49,12 @@ require("lazy").setup({
             -- })
           end,
         })
-        vim.lsp.config('ts_ls', {})
+        vim.lsp.config('ts_ls', {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
+        })
         vim.lsp.config('gopls', {
           on_attach = function(client)
             -- Enable format on save
@@ -134,34 +139,11 @@ require("lazy").setup({
       end
     },
     {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      opts = {
-        providers = {
-          ollama = {
-            model = "devstral",
-            endpoint = "http://ollama.home",
-            timeout = 30000,
-          },
-          openai = {
-            endpoint = "https://openrouter.ai/api/v1",
-            model = "moonshotai/kimi-k2",
-            api_key_name = "OPENROUTER_API_KEY",
-            max_tokens = 8000,
-            extra_request_body = {
-              temperature = 0.6,
-            },
-          },
-        },
-      },
-      build = "make",
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons",
-      },
+      "hat0uma/csvview.nvim",
+      ft = { "csv", "tsv" },
+      config = function()
+        require("csvview").setup()
+      end,
     },
     {
       "cgrindel/vim-bazelrc",
@@ -204,7 +186,7 @@ require("lazy").setup({
               vim.api.nvim_create_autocmd("BufWritePre", {
                 buffer = bufnr,
                 callback = function()
-                  vim.lsp.buf.format({ bufnr = bufnr, async = false })
+                  vim.lsp.buf.format({ bufnr = bufnr, async = false, filter = function(client) return client.name == "null-ls" end })
                 end,
               })
             end
