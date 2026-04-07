@@ -1,0 +1,12 @@
+{
+  "model": "opus",
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "showThinkingSummaries": true,
+  "effortLevel": "high",
+  "skipDangerousModePermissionPrompt": true
+}
