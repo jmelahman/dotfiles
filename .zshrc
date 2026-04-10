@@ -90,7 +90,7 @@ parse_terraform_workspace() {
 }
 
 activate_default_venv() {
-  source ~/code/onyx/.venv/bin/activate
+  [[ -f ~/code/onyx/.venv/bin/activate ]] && source ~/code/onyx/.venv/bin/activate
 }
 
 # Automatically activate a Python virtual environment if one exists
@@ -297,7 +297,7 @@ grb() {
 }
 
 # Kitty init
-KITTY_SHELL_INTEGRATION="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}/shell-integration/$(basename $SHELL)/kitty.zsh"
+KITTY_SHELL_INTEGRATION="${KITTY_INSTALLATION_DIR:=/usr/lib/kitty}/shell-integration/$(basename "${SHELL:-zsh}")/kitty.zsh"
 if [ -f "$KITTY_SHELL_INTEGRATION" ]; then
     source "$KITTY_SHELL_INTEGRATION"
 elif [ -x "$(command -v kitty)" ]; then
@@ -336,6 +336,11 @@ export CLICOLOR="Yes"
 export LSCOLOR=""
 
  export GIT_QUIET=true
+
+# Fall back to less if the configured git pager isn't installed
+if ! command -v "$(git config --get core.pager 2>/dev/null | awk '{print $1}')" &>/dev/null; then
+  export GIT_PAGER=less
+fi
 
 # Customize Path
 export GOPATH="$HOME/.go"

@@ -26,85 +26,69 @@ require("lazy").setup({
       config = function()
         local coq = require("coq")
 
-        vim.lsp.config('pyright', {})
-
-        vim.lsp.config('ruff', {
-          cmd = { "uv", "tool", "run", "ruff", "server" },
-          on_attach = function(client)
-            -- Enable fix all auto-fixable problems on save
-            -- vim.api.nvim_create_autocmd("BufWritePre", {
-            --   group = vim.api.nvim_create_augroup("RuffFixAll", { clear = true }),
-            --   pattern = "*.py",
-            --   callback = function()
-            --     -- Apply all auto-fixable code actions
-            --     vim.lsp.buf.code_action({
-            --       context = { only = { "source.fixAll.ruff" } },
-            --       apply = true,
-            --     })
-            --     -- Also format the document
-            --     if client.server_capabilities.documentFormattingProvider then
-            --       vim.lsp.buf.format({ async = false })
-            --     end
-            --   end,
-            -- })
-          end,
-        })
-        vim.lsp.config('ts_ls', {
-          on_attach = function(client)
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-          end,
-        })
-        vim.lsp.config('gopls', {
-          on_attach = function(client)
-            -- Enable format on save
-            if client.server_capabilities.documentFormattingProvider then
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("GoFormat", { clear = true }),
-                pattern = '*.go',
-                callback = function() vim.lsp.buf.format() end
-              })
-            end
-          end,
-        })
-
-        vim.lsp.config('rust_analyzer', {
-          capabilities = vim.lsp.protocol.make_client_capabilities(),
-          on_attach = function(client)
-            -- Enable format on save
-            if client.server_capabilities.documentFormattingProvider then
-              vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("RustFmt", { clear = true }),
-                pattern = '*.rs',
-                callback = function() vim.lsp.buf.format() end,
-              })
-            end
-          end,
-        })
-
-        vim.lsp.config('yamlls', {
-          settings = {
-            yaml = {
-              schemas = {
-                ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-                ["https://json.schemastore.org/prettierrc.json"] = "/.prettierrc.{yml,yaml}",
-                kubernetes = "/*.yaml",
+        -- Server configurations shared by both old and new APIs.
+        local servers = {
+          pyright = {},
+          ruff = {
+            cmd = { "uv", "tool", "run", "ruff", "server" },
+          },
+          ts_ls = {
+            on_attach = function(client)
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentRangeFormattingProvider = false
+            end,
+          },
+          gopls = {
+            on_attach = function(client)
+              if client.server_capabilities.documentFormattingProvider then
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                  group = vim.api.nvim_create_augroup("GoFormat", { clear = true }),
+                  pattern = '*.go',
+                  callback = function() vim.lsp.buf.format() end
+                })
+              end
+            end,
+          },
+          rust_analyzer = {
+            capabilities = vim.lsp.protocol.make_client_capabilities(),
+            on_attach = function(client)
+              if client.server_capabilities.documentFormattingProvider then
+                vim.api.nvim_create_autocmd("BufWritePre", {
+                  group = vim.api.nvim_create_augroup("RustFmt", { clear = true }),
+                  pattern = '*.rs',
+                  callback = function() vim.lsp.buf.format() end,
+                })
+              end
+            end,
+          },
+          yamlls = {
+            settings = {
+              yaml = {
+                schemas = {
+                  ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+                  ["https://json.schemastore.org/prettierrc.json"] = "/.prettierrc.{yml,yaml}",
+                  kubernetes = "/*.yaml",
+                },
+                format = { enable = true },
+                validate = true,
               },
-              format = {
-                enable = true,
-              },
-              validate = true,
             },
           },
-        })
+        }
 
-        -- Enable the configured LSP servers with COQ capabilities
-        vim.lsp.enable('pyright')
-        vim.lsp.enable('ruff')
-        vim.lsp.enable('ts_ls')
-        vim.lsp.enable('gopls')
-        vim.lsp.enable('rust_analyzer')
-        vim.lsp.enable('yamlls')
+        if vim.lsp.config then
+          -- Neovim 0.11+ native LSP config API
+          for name, cfg in pairs(servers) do
+            vim.lsp.config(name, cfg)
+            vim.lsp.enable(name)
+          end
+        else
+          -- Neovim 0.10 and earlier — use nvim-lspconfig
+          local lspconfig = require("lspconfig")
+          for name, cfg in pairs(servers) do
+            lspconfig[name].setup(coq.lsp_ensure_capabilities(cfg))
+          end
+        end
       end,
     },
     {
