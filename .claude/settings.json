@@ -5,6 +5,7 @@
     "figma@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
+  "plansDirectory": "./plans",
   "effortLevel": "high",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
