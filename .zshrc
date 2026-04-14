@@ -171,8 +171,8 @@ alias zwift="CONTAINER_TOOL='podman' zwift"
 # TODO: Remove python3.12 once https://github.com/Aider-AI/aider/issues/3660 is resolved.
 alias aider="uvx --python=3.12 --from=aider-chat aider"
 alias ruff="uvx ruff"
-alias openhands="uvx --python=3.12 --from=openhands-ai openhands"
 alias pkillgrep='function _pg() { ps aux | grep "$1" | grep -v grep | awk "{print \$2}" | xargs -r kill; }; _pg'
+alias fix-monitors="swaymsg output DP-1 position 0 0 && swaymsg output eDP-1 position 2560 0"
 alias enable="swaymsg output eDP-1 enable"
 alias disable="swaymsg output eDP-1 disable"
 alias snip="slurp | grim -g -"
@@ -180,7 +180,6 @@ alias snap="sleep 2 && swaymsg -t get_tree | jq -r '.. | select(.focused?) | .re
 alias chat="ollama run mistral-small3.2:latest"
 alias coder="ollama run qwen3-coder:latest"
 alias weak="ollama run jqwen3:0.6b"
-alias sober='echo $(( ($(date +%s) - $(date -d '2025-04-15' +%s)) / 86400 ))'
 alias lights='smart-lights'
 alias awslogin="aws sso login"
 alias venv="uv venv .venv --python 3.11 --allow-existing && source .venv/bin/activate"
