@@ -1,7 +1,8 @@
 # Enable completion
 autoload -Uz compinit add-zsh-hook
 compinit
-add-zsh-hook chpwd auto_activate_venv
+add-zsh-hook chpwd
+# add-zsh-hook chpwd auto_activate_venv
 
 # History
 HISTFILE=~/.zsh_history
