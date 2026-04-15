@@ -359,6 +359,10 @@ if [ -f /.dockerenv ]; then
   export IN_DOCKER=true
 else
   export IN_DOCKER=false
+  # Load default SSH keys into the agent if it's running but empty
+  if [[ -n "$SSH_AUTH_SOCK" ]]; then
+    ssh-add -l &>/dev/null || ssh-add &>/dev/null
+  fi
 fi
 export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
