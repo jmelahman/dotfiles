@@ -1,14 +1,4 @@
 {
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true
-  },
-  "plansDirectory": "./plans",
-  "effortLevel": "high",
-  "showThinkingSummaries": true,
-  "skipDangerousModePermissionPrompt": true,
   "env": {
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
@@ -30,5 +20,15 @@
       "LSP(*)",
       "mcp__*"
     ]
-  }
+  },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "high",
+  "plansDirectory": "./plans",
+  "showThinkingSummaries": true,
+  "skipDangerousModePermissionPrompt": true
 }

@@ -253,6 +253,25 @@ function __gsubtree() {
   git -C "$toplevel" subtree "$cmd" --prefix "$subtree" "git@github.com:jmelahman/$(basename "${subtree}").git" master "$@"
 }
 
+fixbranch() {
+  local branch="$1"
+  if [[ -z "$branch" ]]; then
+    echo "Usage: fixbranch <branch>"
+    return 1
+  fi
+  git fetch origin "$branch" && git checkout "$branch" && pre-commit run --last-commit; git commit -am "nit" && git push origin "$branch"
+
+  local pr
+  pr=$(gh pr list --head "$branch" --json number --jq '.[0].number')
+  if [[ -z "$pr" ]]; then
+    echo "No open PR found for branch $branch"
+    return 1
+  fi
+  echo "Found PR #$pr"
+  gh pr review "$pr" --approve
+  gh pr merge "$pr" --auto --squash
+}
+
 grb() {
   local input="$1"
   local remote="${input%%:*}"
