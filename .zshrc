@@ -259,7 +259,11 @@ fixbranch() {
     echo "Usage: fixbranch <branch>"
     return 1
   fi
-  git fetch origin "$branch" && git checkout "$branch" && pre-commit run --last-commit; git commit -am "nit" && git push origin "$branch"
+  git fetch origin "$branch"
+  git checkout "$branch"
+  prek run --last-commit || true
+  git commit -am "nit"
+  git push origin "$branch"
 
   local pr
   pr=$(gh pr list --head "$branch" --json number --jq '.[0].number')
