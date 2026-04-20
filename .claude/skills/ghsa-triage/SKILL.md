@@ -27,7 +27,20 @@ Before Phase 1, verify:
 
 1. `gh auth status` reports an authenticated account with `repo` and `security_events` scopes. If not, stop and ask the user to run `gh auth login --scopes repo,security_events`.
 2. Working tree is clean (`git status --porcelain` is empty). If dirty, stop and ask the user to commit or stash.
-3. Current branch is `<author>/<GHSA-ID>`. If on `main` or another branch, propose creating `<gh-username>/<GHSA-ID>` via `git checkout -b`.
+3. A suitable working branch exists. If on `main` or an unrelated branch, propose a new branch via `git checkout -b`. **Branch names must not leak advisory content** — use a generic, topic-based name like `<gh-username>/harden-<area>-<issue>` (e.g. `jmelahman/harden-chat-session-authz`). Do not embed the GHSA ID, CVE ID, or reporter-supplied terminology in the branch name until the advisory is published.
+
+## Embargo handling
+
+Treat every advisory as **embargoed** unless the `gh api` payload has a non-null `published_at`. For embargoed advisories, **no public artifact** produced by this workflow may contain any of:
+
+- The GHSA ID or CVE ID
+- The advisory summary or description text
+- Reporter handles, PoC payloads, or screenshot URLs
+- Any language that would let a reader reconstruct the vulnerability before disclosure
+
+Public artifacts include: branch names, commit subjects, commit bodies, source code comments, test names, test docstrings, PR titles, PR descriptions, and any file content committed to git. Keep GHSA references in ephemeral places only: chat with the user, the private advisory thread, and (after publication) a follow-up advisory comment.
+
+When the advisory is already published (`published_at` is set), the restrictions above relax — you may reference the GHSA/CVE in commits, comments, and PRs. The skill still prefers generic branch names for consistency.
 
 ## Phase 1: Collection
 
@@ -94,11 +107,11 @@ Add **exactly one regression test** that fails on `main` and passes after the fi
 3. **Playwright test** in `web/tests/e2e/` — when the vuln is a frontend/backend flow that only reproduces through the browser.
 4. **Unit test** in `backend/tests/unit/` — last resort, only for isolated pure-logic fixes.
 
-Add one short comment on the test referencing the GHSA ID — this is one of the rare cases where the WHY is non-obvious to future readers.
+The test name and docstring must describe the behavior being verified (e.g. `test_stop_chat_session_rejects_non_owner`), not the advisory.
 
 ```python
-# Regression test for GHSA-xxxx-xxxx-xxxx.
-def test_<name>(...):
+def test_stop_chat_session_rejects_non_owner(...):
+    """Non-owner callers must not be able to stop another user's chat session."""
     ...
 ```
 
