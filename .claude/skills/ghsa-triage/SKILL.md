@@ -140,9 +140,11 @@ Then stop and wait. Do not commit, do not push, do not open a PR without an expl
 
 ## Phase 8: Commit and PR
 
-On explicit approval:
+On explicit approval. First re-check `published_at` — if still null, the advisory is embargoed and commit/PR content must stay generic.
 
-Commit message template (public advisory):
+### Published advisory
+
+Commit message template:
 
 ```
 fix(security): <short description> to patch <GHSA-ID>
@@ -153,20 +155,25 @@ Advisory: https://github.com/onyx-dot-app/onyx/security/advisories/<GHSA-ID>
 <CVE-ID if assigned>
 ```
 
-Commit message template (embargoed / private advisory): ask the user for a vague subject they are comfortable with (e.g. `fix(security): harden <area> input validation`). Do not leak GHSA details in the public commit for an embargoed advisory — disclose in the advisory comment after publication instead.
+PR body may reference the GHSA directly.
+
+### Embargoed advisory
+
+Propose a generic subject describing the defensive change, not the vulnerability (e.g. `fix(security): harden chat session stop endpoint authorization`). Confirm the subject with the user before committing.
+
+Commit body: one paragraph describing the hardening in general terms — what invariant the change now enforces, not what attack it prevents. Do not include the GHSA ID, CVE ID, advisory URL, reporter handle, PoC excerpts, or phrasing copied from the advisory text. The in-repo commit must read like a routine hardening change to anyone browsing `git log`.
+
+PR title and body follow the same rule. Use generic language describing the behavior change. Do not link the advisory; avoid words like "IDOR", "auth bypass", "exploit" that would tip off a reader. Track the GHSA linkage privately — comment on the advisory thread with the PR URL after it is opened, never the reverse.
 
 Push the branch, then open the PR:
 
 ```bash
 gh pr create --title "<commit subject>" --body "$(cat <<'EOF'
 ## Description
-- <bullet 1>
-- <bullet 2>
+- <generic bullet describing the behavior change>
+- <generic bullet describing the behavior change>
 
-## Security
-Fixes <GHSA-ID>. See advisory for full context (embargoed until publication).
-
-## How Has This Been Test?
+## How Has This Been Tested?
 - [x] New regression test passes
 - [x] `pre-commit run --all-files` clean
 - [x] `/security-review` findings addressed
@@ -176,13 +183,9 @@ EOF
 
 Return the PR URL to the user. Then invoke the harness `/check-pr` skill to catch anything CI or reviewers might flag.
 
-## Conventions reference
-
-Use the `fix(security): ... to patch <GHSA-ID>` shape for app-code fixes covered by this skill.
-
 ## Failure modes to watch for
 
 - **Patching the symptom, not the root cause** — if the fix is a string filter rather than a structural change, stop and reconsider in Phase 4.
 - **Over-scoping** — one GHSA, one minimal diff, one regression test. Resist the urge to refactor.
 - **Silent commits** — never commit without the explicit Phase 7 approval, even if the fix looks trivial.
-- **Leaking advisory content** — for embargoed advisories, keep the commit subject generic and skip the GHSA ID in the public commit body.
+- **Leaking advisory content** — for embargoed advisories, no GHSA/CVE/reporter/PoC references belong in any committed artifact: branch name, commit message, source comments, test names, PR title, PR body. Treat every committed artifact as public.

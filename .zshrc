@@ -393,7 +393,9 @@ export BUILDX_BAKE_ENTITLEMENTS_FS=0
 export SKIP=npm-install-check
 export IMAGE_TAG=edge
 
-export AWS_PROFILE="jamison"
+if [ "$IN_DOCKER" != "true" ]; then
+  export AWS_PROFILE="jamison"
+fi
 export HOST_PORT_80="8888"
 
 #export OLLAMA_HOST=http://ollama.home
