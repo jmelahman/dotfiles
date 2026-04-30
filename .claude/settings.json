@@ -30,5 +30,6 @@
   "effortLevel": "high",
   "plansDirectory": "./plans",
   "showThinkingSummaries": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "remoteControlAtStartup": false
 }
