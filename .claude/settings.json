@@ -18,7 +18,8 @@
       "NotebookEdit(*)",
       "Agent(*)",
       "LSP(*)",
-      "mcp__*"
+      "mcp__*",
+      "mcp__playwright__*"
     ]
   },
   "enabledPlugins": {
