@@ -31,5 +31,6 @@
   "plansDirectory": "./plans",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "remoteControlAtStartup": false
 }
