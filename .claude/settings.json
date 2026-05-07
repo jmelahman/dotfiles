@@ -19,7 +19,8 @@
       "Agent(*)",
       "LSP(*)",
       "mcp__*",
-      "mcp__playwright__*"
+      "mcp__playwright__*",
+      "mcp__vanta__*"
     ]
   },
   "enabledPlugins": {
