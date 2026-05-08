@@ -1,0 +1,21 @@
+[devcontainer]
+mounts = ['type=bind,source=/run/user/1000/ssh-agent.socket,target=/tmp/ssh-agent.sock']
+run_args = ['--cap-add=SYS_PTRACE']
+
+[devcontainer.container_env]
+SSH_AUTH_SOCK = '/tmp/ssh-agent.sock'
+
+[errors]
+enabled = true
+
+[harness]
+id = 'claude'
+
+[merge]
+allow_merge_commit = false
+allow_rebase = false
+allow_squash = true
+
+[sync]
+allow_merge = false
+allow_rebase = true
