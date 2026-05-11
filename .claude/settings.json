@@ -19,6 +19,7 @@
       "Agent(*)",
       "LSP(*)",
       "mcp__*",
+      "mcp__kanban__*",
       "mcp__playwright__*",
       "mcp__vanta__*"
     ]
