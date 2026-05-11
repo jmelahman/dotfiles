@@ -1,1 +1,1 @@
-/home/jamison/code/agentic-kanban/.devcontainer/init-firewall.sh
+../../code/agentic-kanban/.devcontainer/init-firewall.sh
