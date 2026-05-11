@@ -389,6 +389,8 @@ else
 fi
 export BUILDX_BAKE_ENTITLEMENTS_FS=0
 
+export DEVCONTAINER_FIREWALL=false
+
 # TODO: npm install changes the lockfile on Linux, https://github.com/onyx-dot-app/onyx/issues/7381
 export SKIP=npm-install-check
 export IMAGE_TAG=edge
