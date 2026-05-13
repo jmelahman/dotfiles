@@ -392,6 +392,8 @@ export BUILDX_BAKE_ENTITLEMENTS_FS=0
 export DEVCONTAINER_FIREWALL=false
 export DEVCONTAINER_REMOTE_USER=root
 export DEVCONTAINER_REMOTE_HOME=/root
+export KANBAN_UID=0
+export KANBAN_GID=0
 
 # TODO: npm install changes the lockfile on Linux, https://github.com/onyx-dot-app/onyx/issues/7381
 export SKIP=npm-install-check
