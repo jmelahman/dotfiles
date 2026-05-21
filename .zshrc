@@ -331,22 +331,12 @@ then
     source /usr/share/fzf/key-bindings.zsh
 fi
 
-# Node Version Manager init
-if [ -r /usr/share/nvm/init-nvm.sh ]
-then
-    source /usr/share/nvm/init-nvm.sh
-fi
-
 # Load env
 if [ -f "$HOME/.env" ]; then
   while read -r line; do
     export "$line"
   done < "$HOME/.env"
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Vim as default
 export EDITOR="vim"
@@ -409,3 +399,6 @@ export HOST_PORT_80="8888"
 
 # For torch with AMD GPU
 export HSA_OVERRIDE_GFX_VERSION=11.0.0
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/jamison/.lmstudio/bin"

@@ -1,3 +1,15 @@
+[buildcop]
+enabled = true
+
+[[buildcop.boards]]
+name                  = "Build Cop: Onyx"
+repo_path             = "/home/jamison/code/onyx"
+branch                = "main"
+failure_threshold     = 0.01
+min_runs              = 5
+green_streak_required = 3
+window_days           = 5
+
 [devcontainer]
 mounts = ['type=bind,source=/run/user/1000/ssh-agent.socket,target=/tmp/ssh-agent.sock']
 run_args = ['--cap-add=SYS_PTRACE']
@@ -9,7 +21,7 @@ SSH_AUTH_SOCK = '/tmp/ssh-agent.sock'
 enabled = true
 
 [harness]
-id = 'pi'
+id = 'claude'
 
 [merge]
 allow_merge_commit = false
