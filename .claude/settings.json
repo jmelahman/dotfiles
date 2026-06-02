@@ -3,7 +3,8 @@
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
+    "SHELL": "/usr/bin/bash"
   },
   "permissions": {
     "allow": [
@@ -30,10 +31,11 @@
     "figma@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "plansDirectory": "./plans",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "remoteControlAtStartup": false
+  "remoteControlAtStartup": false,
+  "skipWorkflowUsageWarning": true
 }

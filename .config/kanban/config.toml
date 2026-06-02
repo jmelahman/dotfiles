@@ -2,12 +2,21 @@
 enabled = true
 
 [[buildcop.boards]]
-name                  = "Build Cop: Onyx"
+name                  = "Build Cop: main"
 repo_path             = "/home/jamison/code/onyx"
 branch                = "main"
 failure_threshold     = 0.01
 min_runs              = 5
 green_streak_required = 3
+window_days           = 3
+interval              = 10
+
+[[buildcop.boards]]
+name                  = "Build Cop: onyx"
+repo_path             = "/home/jamison/code/onyx"
+failure_threshold     = 0.10
+min_runs              = 5
+green_streak_required = 10
 window_days           = 5
 
 [devcontainer]
@@ -20,17 +29,12 @@ SSH_AUTH_SOCK = '/tmp/ssh-agent.sock'
 [errors]
 enabled = true
 
-[harness]
-id = 'claude'
-
 [merge]
 allow_merge_commit = false
 allow_rebase = false
-allow_squash = true
 
 [plans]
 dir = './plans'
 
 [sync]
 allow_merge = false
-allow_rebase = true
