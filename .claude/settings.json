@@ -21,6 +21,7 @@
       "LSP(*)",
       "mcp__*",
       "mcp__kanban__*",
+      "mcp__linear__*",
       "mcp__playwright__*",
       "mcp__vanta__*"
     ]
