@@ -8,6 +8,7 @@ image/jpeg=firefox.desktop
 video/mp4=firefox.desktop
 image/png=firefox.desktop
 x-scheme-handler/slack=slack.desktop
+x-scheme-handler/nxm=io.github.limo_app.limo.desktop
 
 [Added Associations]
 image/jpeg=firefox.desktop;

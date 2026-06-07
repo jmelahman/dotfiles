@@ -1,0 +1,21 @@
+{
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://ollama:11434/v1",
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "models": [
+        {
+          "id": "qwen3.6:35b-a3b",
+          "name": "Qwen 3.6 35B-A3B",
+          "contextWindow": 262144
+        },
+        {
+          "id": "qwen3.6:27b",
+          "name": "Qwen 3.6 27B",
+          "contextWindow": 262144
+        }
+      ]
+    }
+  }
+}
