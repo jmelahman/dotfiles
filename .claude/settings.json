@@ -19,7 +19,7 @@
       "NotebookEdit(*)",
       "Agent(*)",
       "LSP(*)",
-      "mcp__*",
+      "mcp__figma__*",
       "mcp__kanban__*",
       "mcp__linear__*",
       "mcp__playwright__*",
@@ -29,14 +29,13 @@
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
   "plansDirectory": "./plans",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
   "theme": "dark",
-  "remoteControlAtStartup": false,
-  "skipWorkflowUsageWarning": true
+  "remoteControlAtStartup": false
 }
