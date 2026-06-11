@@ -151,7 +151,7 @@ alias gl="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgre
 alias gr='git reset --soft HEAD~1 && git commit --amend --no-edit'
 alias gg='git log --graph --oneline --all --decorate'
 alias gb='git for-each-ref --sort=-committerdate refs/heads/'
-alias gt='git log --no-walk --tags --pretty="%h %d %s" --decorate=full'
+alias gt="git log --no-walk --tags --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate=full"
 alias grep='grep --color=auto'
 alias kc="kubectl"
 alias nit='git commit -am "nit"'
