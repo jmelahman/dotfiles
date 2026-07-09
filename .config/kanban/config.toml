@@ -18,6 +18,7 @@ min_runs = 5
 name = 'Build Cop: onyx'
 repo_path = '/home/jamison/code/onyx'
 window_days = 5
+flaky_threshold = 2
 
 [dev_toolbar]
 enabled = true
@@ -41,3 +42,6 @@ dir = './plans'
 
 [sync]
 allow_merge = false
+
+[worktrees]
+root = '/home/jamison/code/worktree-onyx'

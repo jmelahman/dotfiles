@@ -23,9 +23,11 @@
       "mcp__kanban__*",
       "mcp__linear__*",
       "mcp__playwright__*",
+      "mcp__sentry__*",
       "mcp__vanta__*"
     ]
   },
+  "model": "opus",
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -34,6 +36,7 @@
   },
   "effortLevel": "xhigh",
   "plansDirectory": "./plans",
+  "tui": "fullscreen",
   "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
