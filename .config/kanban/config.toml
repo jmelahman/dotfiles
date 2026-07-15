@@ -13,12 +13,12 @@ window_days = 3
 
 [[buildcop.boards]]
 failure_threshold = 0.1
+flaky_threshold = 2
 green_streak_required = 10
 min_runs = 5
 name = 'Build Cop: onyx'
 repo_path = '/home/jamison/code/onyx'
 window_days = 5
-flaky_threshold = 2
 
 [dev_toolbar]
 enabled = true
@@ -42,6 +42,3 @@ dir = './plans'
 
 [sync]
 allow_merge = false
-
-[worktrees]
-root = '/home/jamison/code/worktree-onyx'

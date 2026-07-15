@@ -19,6 +19,7 @@
       "NotebookEdit(*)",
       "Agent(*)",
       "LSP(*)",
+      "mcp__amo__*",
       "mcp__figma__*",
       "mcp__kanban__*",
       "mcp__linear__*",
