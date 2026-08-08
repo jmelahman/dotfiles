@@ -28,7 +28,7 @@
       "mcp__vanta__*"
     ]
   },
-  "model": "opus",
+  "model": "claude-opus-5",
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,

@@ -64,13 +64,29 @@ parse_git_info() {
   branch=$(git symbolic-ref --short HEAD 2>/dev/null)
   [[ -z $branch ]] && return
 
-  marks=""
   dirty=$(git status --porcelain 2>/dev/null)
 
-  [[ $dirty == *"M "* ]] && marks+="!"
-  [[ $dirty == *"?? "* ]] && marks+="?"
-  [[ $dirty == *"A "* ]] && marks+="+"
-  [[ $dirty == *"D "* ]] && marks+="x"
+  # Match only the two status columns of each line, so a path containing
+  # "M " or "D " can't masquerade as a staged change.
+  local line xy
+  local -i mod=0 untracked=0 added=0 deleted=0
+  for line in ${(f)dirty}; do
+    xy=${line[1,2]}
+    if [[ $xy == '??' ]]; then
+      untracked=1
+    else
+      [[ $xy == *M* ]] && mod=1
+      [[ $xy == *A* ]] && added=1
+      [[ $xy == *D* ]] && deleted=1
+    fi
+    (( mod && untracked && added && deleted )) && break
+  done
+
+  marks=""
+  (( mod ))       && marks+="!"
+  (( untracked )) && marks+="?"
+  (( added ))     && marks+="+"
+  (( deleted ))   && marks+="x"
   [[ $(git rev-list --count --left-only @{u}...HEAD 2>/dev/null) -gt 0 ]] && marks+="*"
 
   echo " [$branch${marks:+ $marks}]"
@@ -114,8 +130,15 @@ auto_activate_venv() {
 activate_default_venv
 
 kube_context_info() {
-  local ctx short
-  ctx="$(kubectl config current-context 2>/dev/null)"
+  local ctx short cfg="${KUBECONFIG:-$HOME/.kube/config}"
+  # Read the file directly; `kubectl config current-context` costs ~110ms of
+  # binary startup on every prompt. A colon-separated KUBECONFIG has to be
+  # merged by kubectl, so that case keeps the slow path.
+  if [[ $cfg == *:* ]]; then
+    ctx="$(kubectl config current-context 2>/dev/null)"
+  else
+    ctx="$(awk '/^current-context:/{print $2; exit}' "$cfg" 2>/dev/null)"
+  fi
   [[ -z "$ctx" ]] && return
   short="${ctx##*/}"
   echo " ⎈ $short"
@@ -356,7 +379,7 @@ fi
 # Customize Path
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
-export PATH=$HOME/code/monorepo/tools/bin:$HOME/.local/bin:$GOBIN:$PATH
+export PATH=$HOME/code/monorepo/tools/bin:$HOME/.local/bin:$GOBIN:$HOME/.bun/bin:$PATH:$PATH
 
 export GRIM_DEFAULT_DIR="~/Pictures"
 

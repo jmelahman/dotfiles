@@ -9,6 +9,7 @@ video/mp4=firefox.desktop
 image/png=firefox.desktop
 x-scheme-handler/slack=slack.desktop
 x-scheme-handler/nxm=io.github.limo_app.limo.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 
 [Added Associations]
 image/jpeg=firefox.desktop;
